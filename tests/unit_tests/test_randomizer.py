@@ -1,0 +1,28 @@
+import pytest
+from src.helper.global_.randomizer import *
+from src.helper.global_.global_helper import is_numbers_in_string
+
+
+@pytest.mark.tests_for_helper
+class TestRandomise:
+
+    def test_random_float(self):
+        num = get_random_float(5, 10)
+        assert all([num >= 5, num <= 10, type(num) is float])
+
+    def test_random_int(self):
+        num = get_random_int(1, 5)
+        assert all([num >= 1, num <= 5, type(num) is int])
+
+    def test_random_string(self):
+        random_string_1 = get_random_low_string(5)
+        random_string_2 = get_random_low_string(5)
+        assert all([len(random_string_1) == 5, random_string_1 != random_string_2, type(random_string_1) is str])
+
+    def test_random_string_with_nums(self):
+        random_string = get_random_low_string(30, with_digits=True)
+        assert all([is_numbers_in_string(random_string), type(random_string) is str])
+
+    def test_random_phone_number(self):
+        number = get_random_phone_number()
+        assert len(str(number)) == 10
