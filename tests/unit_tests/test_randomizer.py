@@ -1,6 +1,9 @@
 import pytest
-from src.helper.global_.randomizer import *
-from src.helper.global_.global_helper import is_numbers_in_string
+
+from helper.global_.global_helper import is_numbers_in_string
+from helper.global_.randomizer import get_random_float, get_random_int, get_random_low_string, get_random_phone_number, \
+    get_random_login, get_random_branch_name, get_random_item_name, get_random_spare_part, get_random_service_name, \
+    get_random_client_name, get_random_email
 
 
 @pytest.mark.tests_for_helper

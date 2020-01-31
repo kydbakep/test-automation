@@ -1,0 +1,4 @@
+selenium==3.141.0
+selene==2.0.0a18
+pytest==5.3.5
+faker==4.0.0
