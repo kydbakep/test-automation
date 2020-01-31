@@ -46,3 +46,7 @@ class TestRandomise:
     def test_random_service_name(self):
         service = get_random_service_name()
         assert all([service.startswith('Service'), len(service) == 16])
+
+    def test_random_name(self):
+        name = get_random_client_name()
+        assert all([len(name) > 8, type(name) is str])
