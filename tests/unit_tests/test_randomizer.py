@@ -50,3 +50,7 @@ class TestRandomise:
     def test_random_name(self):
         name = get_random_client_name()
         assert all([len(name) > 8, type(name) is str])
+
+    def test_random_email(self):
+        email = get_random_email()
+        assert all([len(email) > 6, type(email) is str, '@' in email])
