@@ -23,3 +23,23 @@ def get_random_float(a=1, b=2):
 
 def get_random_phone_number():
     return random.randint(1000000000, 9999999999)
+
+
+def get_random_login():
+    return f'Test-{Faker().user_name()}'
+
+
+def get_random_branch_name():
+    return f'Location-{get_random_low_string(7, with_digits=True)}'
+
+
+def get_random_item_name():
+    return f'Item-{get_random_low_string(8)}'
+
+
+def get_random_spare_part():
+    return f'Spare-{get_random_low_string(8)}'
+
+
+def get_random_service_name():
+    return f'Service-{get_random_low_string(8)}'
