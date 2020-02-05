@@ -73,6 +73,10 @@ def get_random_first_name():
     return Faker().first_name()
 
 
+def get_random_last_name():
+    return Faker().last_name()
+
+
 def get_random_email():
     fake = Faker()
     first_n = fake.random.choice([fake.first_name_male(), fake.first_name_female()])

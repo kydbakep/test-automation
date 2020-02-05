@@ -1,7 +1,7 @@
-from helper.warehouse.h_wh_stock import WarehouseStockHelper
+from src.helper import BrowserFixtures as Browser
 
 
-class TestWarehouseStock(WarehouseStockHelper):
+class TestWarehouseStock(Browser):
 
     def test_browser(self):
         pass

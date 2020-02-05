@@ -2,8 +2,14 @@
   <dictionary name="tober">
     <words>
       <w>cashbox</w>
+      <w>chromedriver</w>
+      <w>geckodriver</w>
       <w>gitignore</w>
+      <w>lname</w>
+      <w>prefs</w>
+      <w>pricelist</w>
       <w>pytest</w>
+      <w>tobermory</w>
     </words>
   </dictionary>
 </component>
