@@ -51,5 +51,3 @@ BRANCH_URL = "#!/settings/branch"
 FORM_EDITOR_URL = "#!/settings/fe"
 
 PRICE_AND_DISCOUNT_URL = "#!/settings/prices"
-
-GOOGLE_URL = 'https://google.com.ua'

@@ -1,5 +1,4 @@
-from selene.api import s, by
-from selene.support.conditions.be import visible, in_dom
+from selene.api import s, by, be
 
 from src.helper.global_.selectors.sel_main_page import AVATAR_SEL
 
@@ -9,6 +8,6 @@ class PageMain:
         self.__avatar = s(AVATAR_SEL)
 
     def is_current_user(self, first_name, last_name):
-        self.__avatar.should_be(visible)
-        s(by.xpath(f"//li[contains(text(), '{first_name} {last_name}')]")).should_be(in_dom)
+        self.__avatar.should(be.visible)
+        s(by.xpath(f"//li[contains(text(), '{first_name} {last_name}')]")).should(be.in_dom)
         return True
