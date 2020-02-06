@@ -1,3 +1,4 @@
+from selene import Config
 from selene.api import s, be, browser
 
 from settings.s_browser import Settings
@@ -39,13 +40,14 @@ class PageAuth(Settings):
         self.__submit_button.click()
         customer = self.__set_registration_data()
         self.__register_submit_button.click()
+        self.__register_submit_button.with_(Config(timeout=10)).should(be.not_.visible)
         return customer
 
     def __set_registration_data(self):
         data = REGISTRATION_DATA
         first_name = data['first_name']
         last_name = data['last_name']
-        self.__first_name_input.should(be.visible).type(first_name)
+        self.__first_name_input.with_(Config(timeout=10)).should(be.visible).type(first_name)
         self.__last_name_input.type(last_name)
         self.__company_name_input.type(data['company_name'])
         set_select_option(browser.element(self.__country_select)(), data['country'])
