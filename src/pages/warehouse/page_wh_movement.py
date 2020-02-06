@@ -21,10 +21,10 @@ class PageWarehouseMovement:
         element.should(be.not_.visible)
         return True
 
-    def select_stock_from(self):
+    def select_stock_from(self, stock_name):
         pass
 
-    def select_stock_to(self):
+    def select_stock_to(self, stock_name):
         pass
 
     def select_goods_from_dropdown(self, goods_name: str):
@@ -33,5 +33,5 @@ class PageWarehouseMovement:
     def set_comment(self, comment_text: str):
         pass
 
-    def finish_movement(self):
+    def finish(self):
         pass
