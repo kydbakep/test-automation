@@ -8,7 +8,7 @@ from src.pages.page_auth import PageAuth
 class RegisterFixture:
 
     @staticmethod
-    @pytest.fixture(scope='class')
+    @pytest.fixture(scope='class', autouse=True)
     def register(auth=PageAuth()):
         email = get_random_email()
         password = get_random_low_string()

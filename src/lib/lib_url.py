@@ -20,13 +20,14 @@ ORDERS_URL = "#!/orders"
 SHOP_URL = "#!/shop"
 
 # Warehouse
-POSTING_URL = "#!/warehouse/posting"
-RESIDUE_URL = '#!/warehouse'
-WRITE_OFF_URL = "#!/warehouse/outcome"
-STOCK_SETTING_URL = "#!/warehouse/settings"
-MOVE_URL = "#!/warehouse/move"
-INVENTORY_URL = "#!/warehouse/stocktaking"
-SUPPLIER_REFUNDS_URL = "#!/warehouse/supplier_refunds"
+WAREHOUSE_URL = '#!/warehouse'
+WH_RESIDUE_URL = '#!/warehouse/residue'
+WH_POSTING_URL = "#!/warehouse/posting"
+WH_WRITE_OFF_URL = "#!/warehouse/outcome"
+WH_MOVE_URL = "#!/warehouse/move"
+WH_INVENTORY_URL = "#!/warehouse/stocktaking"
+WH_SUPPLIER_REFUNDS_URL = "#!/warehouse/supplier_refunds"
+WH_STOCK_SETTING_URL = "#!/warehouse/settings"
 
 # Clients
 CLIENT_URL = "#!/clients"

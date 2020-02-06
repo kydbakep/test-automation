@@ -1,5 +1,5 @@
 from selene.api import s, ss
-from selene.browser import open_url
+from selene import browser
 
 from src.helper.global_.selectors.sel_google_page import GOOGLE_SEARCH_INPUT
 from src.lib.lib_url import GOOGLE_URL
@@ -7,7 +7,7 @@ from src.lib.lib_url import GOOGLE_URL
 
 class GoogleSearch:
     def __init__(self):
-        open_url(GOOGLE_URL)
+        browser.open(GOOGLE_URL)
 
     @staticmethod
     def find(search_string, result_index=0):

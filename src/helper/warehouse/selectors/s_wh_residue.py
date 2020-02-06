@@ -1,5 +1,3 @@
-from selene.api import by
-
 # FILTERS
 WAREHOUSE_FILTER_SELECT = 'select[name="warehouse"]'
 CATEGORY_FILTER_DROPDOWN = '.js-c-categories'
@@ -22,9 +20,9 @@ TABLE_COLUMNS_CHECKBOXES = {'code': '[data-cid="table-column-dp"] label[for="cod
                             'warranty': '[data-cid="table-column-dp"] label[for="warranty"]'}
 
 # TABLE
-TABLE_BODY = {'row': 'div[data-cid="table-body-row"]',
-              'row_by_title':
-                  by.xpath("//div[@data-body-cell='title'][.='{name}']//ancestor::div[@data-cid='table-body-row']"),
+TABLE_BODY = {'table': '#residue_table',
+              'row': 'div[data-cid="table-body-row"]',
+              'row_by_title': "//div[@data-body-cell='title'][.='{name}']//ancestor::div[@data-cid='table-body-row']",
               'title': 'div[data-body-cell="title"]',
               'code': 'div[data-body-cell="code"]',
               'article': 'div[data-body-cell="article"]',
