@@ -11,7 +11,7 @@ BROWSER_NAME = 'chrome'
 HEADLESS_MODE = False
 
 
-def get_default_url(url=NEXT_URL):
+def get_default_url(url=DEV_URL):
     if os.environ.get('ci_url'):
         address = os.environ['ci_url']
     else:
