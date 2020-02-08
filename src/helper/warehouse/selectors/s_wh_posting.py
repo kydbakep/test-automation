@@ -1,0 +1,1 @@
+POSTING_GOODS_CATEGORIES = {'store': '[data-node-id="361222"]', 'parts': '[data-node-id="361223"]'}

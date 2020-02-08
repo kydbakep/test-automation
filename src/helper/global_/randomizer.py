@@ -23,6 +23,10 @@ def get_random_phone_number():
     return random.randint(1000000000, 9999999999)
 
 
+def get_random_stock_name():
+    return f'Stock-{get_random_low_string(5, with_digits=True)}'
+
+
 def get_random_login():
     return f'Test-{Faker().user_name()}'
 
@@ -84,3 +88,12 @@ def get_random_email():
     random_letter = random.choice(string.ascii_letters).lower()
     username = "{0}{1}{2}@mail.com".format(first_n, random_letter, last_n).lower()
     return username
+
+
+def get_random_serial_numbers(sn_cnt=5):
+    data = {
+        'serials': []
+    }
+    for _ in range(sn_cnt):
+        data['serials'].append(get_random_low_string(4, True))
+    return data

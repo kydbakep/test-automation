@@ -1,5 +1,6 @@
 import pytest
 from src.helper.global_.fixtures.f_browser import RegisterFixture
+from src.helper.global_.randomizer import get_random_low_string
 from src.pages.warehouse.page_wh_core import PageWarehouse
 from src.pages.warehouse.page_wh_movement import PageWarehouseMovement
 from src.pages.warehouse.page_wh_posting import PageWarehousePosting
@@ -22,16 +23,20 @@ class TestWarehouseMovement(RegisterFixture):
 
     @pytest.mark.s03t132
     def test_create_movement(self):
-        stock_page = PageWarehouseStock()
-        default_stock = stock_page.get_default_stock()
-        new_stock = stock_page.create_local_stock()
+        warehouse_page = PageWarehouse()
+        warehouse_page.open_settings_tab()
 
+        stock_page = PageWarehouseStock()
+        default_stock = stock_page.default_stock
+        new_local_stock = stock_page.create_local_stock()
+
+        warehouse_page.open_posting_tab()
         posting_page = PageWarehousePosting()
         goods = posting_page.create_random_posting(stock=default_stock)
 
         movement_page = PageWarehouseMovement()
         movement_page.select_stock_from(default_stock)
-        movement_page.select_stock_to(new_stock)
+        movement_page.select_stock_to(new_local_stock)
         movement_page.select_goods_from_dropdown(goods_name=goods['name'])
         movement_page.finish()
 
