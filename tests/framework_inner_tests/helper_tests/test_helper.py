@@ -2,7 +2,7 @@ import pytest
 from selene.api import by, s, ss, browser
 from selenium.common.exceptions import NoSuchElementException
 
-from src.helper.global_.global_helper import is_element_displayed
+from src.helper.global_.h_methods import is_element_displayed
 
 
 @pytest.mark.tests_for_helper

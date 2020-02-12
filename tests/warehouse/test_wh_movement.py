@@ -1,6 +1,6 @@
 import pytest
+
 from src.helper.global_.fixtures.f_browser import RegisterFixture
-from src.helper.global_.randomizer import get_random_low_string
 from src.pages.warehouse.page_wh_core import PageWarehouse
 from src.pages.warehouse.page_wh_movement import PageWarehouseMovement
 from src.pages.warehouse.page_wh_posting import PageWarehousePosting

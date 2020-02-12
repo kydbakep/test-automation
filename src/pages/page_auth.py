@@ -2,8 +2,8 @@ from selene import Config
 from selene.api import s, be, browser
 
 from settings.s_browser import Settings
-from src.helper.global_.global_helper import set_select_option
-from src.helper.global_.test_data.data_registration import REGISTRATION_DATA
+from src.helper.global_.h_methods import set_select_option
+from src.helper.global_.test_data.td_registration import REGISTRATION_DATA
 from src.lib.lib_url import LOGIN_URL, REGISTRATION_URL
 from src.helper.global_.selectors.sel_auth_page import *
 

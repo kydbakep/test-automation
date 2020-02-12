@@ -52,8 +52,8 @@ def is_numbers_in_string(string_):
     return state
 
 
-def set_select_option(select_element_selector, name: str):
-    node = select_element_selector
+def set_select_option(select_web_element, name: str):
+    node = select_web_element
     select = Select(node)
     select.select_by_visible_text(name)
 
