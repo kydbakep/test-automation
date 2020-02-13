@@ -11,4 +11,4 @@ REGISTER_PHONE_INPUT = '#l-auth-phone'
 REGISTER_TEMPLATE_SELECT = 'select[name="template_id"]'
 
 SUBMIT_BUTTON = '.js-submit-btn'
-REGISTRATION_SUBMIT_BUTTON = '.js-submit'
+REGISTRATION_SUBMIT_BUTTON = '.b-modal_type_registration button.js-submit'

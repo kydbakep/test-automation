@@ -1,21 +1,21 @@
-from selene.api import browser, be, s, ss
+from selene.api import browser, be, s, ss, query
 from selene.core.configuration import Config
 from selene.core.entity import Element, Collection
+
 from selenium.common.exceptions import NoSuchElementException, ElementNotVisibleException, \
     StaleElementReferenceException, TimeoutException
-
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support.expected_conditions import visibility_of
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support.expected_conditions import visibility_of
 from selenium.webdriver.support.select import Select
+from selenium.webdriver.support.ui import WebDriverWait
 
-from src.helper.global_.selectors.sel_global_project import JS_DIALOG_MASK, H_DIALOG_MASK, PRELOADER_SPINNER
+from src.helper.global_.selectors.sel_global_project import *
 
 
 # MASK
 def __wait_for_mask_disappear():
-    s(JS_DIALOG_MASK).should(be.not_.visible)
-    s(H_DIALOG_MASK).should(be.not_.visible)
+    s(DIALOG_MASK_JS).should(be.not_.visible)
+    s(DIALOG_MASK_H).should(be.not_.visible)
 
 
 def is_element_displayed(selector_or_element, timeout=1):
@@ -74,3 +74,11 @@ def update_table_component():
                 spinner.should(be.not_.visible)
     except(NoSuchElementException, TimeoutException, StaleElementReferenceException, TypeError):
         s(PRELOADER_SPINNER).should(be.not_.visible, 10)
+
+
+def get_fresh_document_label():
+    new_item_yellow = s(NEW_DOCUMENT_YELLOW_ROW)
+    new_item_yellow.should(be.visible)
+    document = new_item_yellow.get(query.text)
+    label = document.split('\n')[0]
+    return label

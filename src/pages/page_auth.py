@@ -51,7 +51,7 @@ class PageAuth(Settings):
         self.__last_name_input.type(last_name)
         self.__company_name_input.type(data['company_name'])
         set_select_option(browser.element(self.__country_select)(), data['country'])
-        self.__city_input.type(data['city'])
+        self.__city_input.set_value(data['city'])
         self.__phone_input.click().type(data['phone'])
         set_select_option(browser.element(self.__template_select)(), data['template'])
         return {'first_name': first_name, 'last_name': last_name}

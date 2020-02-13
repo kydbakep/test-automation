@@ -1,18 +1,21 @@
+from selene import Config
 from selene.api import s, be
 from selene.support.shared import browser
 
+from src.lib.lib_url import WAREHOUSE_URL
+
 from src.helper.global_.randomizer import get_random_stock_name
+from src.helper.global_.selectors.sel_global_project import DIALOG_MASK_H, PRELOADER_SPINNER
 from src.helper.warehouse.h_wh_stock import WarehouseStockHelper
 from src.helper.warehouse.selectors.s_wh_stock import *
-from src.helper.global_.selectors.sel_global_project import H_DIALOG_MASK
 
 
 class PageWarehouseStock(WarehouseStockHelper):
 
     def __init__(self):
         self.default_stock = 'Склад'
-        self.__dialog_mask = s(H_DIALOG_MASK)
-
+        self.__page_url = WAREHOUSE_URL
+        self.__dialog_mask = s(DIALOG_MASK_H)
         self.__stock_create_button = s(STOCK_CREATE_BUTTON)
         self.__stock_edit_button = s(STOCK_EDIT_BUTTON)
         self.__stock_delete_button = s(STOCK_DELETE_BUTTON)
@@ -26,6 +29,14 @@ class PageWarehouseStock(WarehouseStockHelper):
         self.__category_edit_button = s(STOCK_EDIT_CATEGORY_BUTTON)
         self.__category_delete_button = s(STOCK_DELETE_CATEGORY_BUTTON)
         self.__category_creation_dialog = s(STOCK_CREATE_CATEGORY_DIALOG)
+
+    def open_page(self):
+        browser.open(self.__page_url)
+        self.__assure_page_loaded()
+
+    def __assure_page_loaded(self, wait_time=4):
+        self.__stock_create_button.should(be.visible, wait_time)
+        s(PRELOADER_SPINNER).should(be.not_.visible)
 
     def __create_stock(self, name=None, local=True, finish=True):
         stock_name = name or get_random_stock_name()
@@ -43,7 +54,7 @@ class PageWarehouseStock(WarehouseStockHelper):
     def __save_stock_dialog(self, finish=True):
         self.__stock_save_button.click()
         if finish:
-            self.__stock_creation_dialog.should(be.not_.visible)
+            self.__stock_creation_dialog.with_(Config(timeout=10)).should(be.not_.visible)
 
     def create_local_stock(self, name=None, finish=True):
         return self.__create_stock(name=name, local=True, finish=finish)

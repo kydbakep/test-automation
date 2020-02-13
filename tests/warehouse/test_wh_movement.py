@@ -32,12 +32,15 @@ class TestWarehouseMovement(RegisterFixture):
 
         warehouse_page.open_posting_tab()
         posting_page = PageWarehousePosting()
-        goods = posting_page.create_random_posting(stock=default_stock)
+        goods_data = posting_page.create_random_posting(stock=default_stock, quantity=1, serial=True)['goods'][0]
 
         movement_page = PageWarehouseMovement()
+        movement_page.open_page()
+        movement_page.open_movement_dialog()
         movement_page.select_stock_from(default_stock)
         movement_page.select_stock_to(new_local_stock)
-        movement_page.select_goods_from_dropdown(goods_name=goods['name'])
+        movement_page.select_goods_from_dropdown(goods_name=goods_data['title'])
+        added_serials = movement_page.set_quantity(1, serials=goods_data['serials'])
         movement_page.finish()
 
         residue_page = PageWarehouseResidue()
