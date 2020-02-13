@@ -40,8 +40,8 @@ class TestWarehouseMovement(RegisterFixture):
         movement_page.select_stock_from(default_stock)
         movement_page.select_stock_to(new_local_stock)
         movement_page.select_goods_from_dropdown(goods_name=goods_data['title'])
-        added_serials = movement_page.set_quantity(1, serials=goods_data['serials'])
-        movement_page.finish()
+        movement_page.set_quantity(goods_data['quantity'] - 1, serials=goods_data['serials'])
+        move_doc = movement_page.move()
 
         residue_page = PageWarehouseResidue()
         residue = residue_page.get_current_residue(goods_name=goods['name'])

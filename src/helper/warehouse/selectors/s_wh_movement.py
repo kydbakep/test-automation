@@ -14,4 +14,8 @@ MOVEMENT_QUANTITY_MODAL_INPUT = f'{MOVEMENT_QUANTITY_MODAL} input[name^="qty"]'
 MOVEMENT_QUANTITY_MODAL_INPUT_SERIAL = f'{MOVEMENT_QUANTITY_MODAL} input[name="serial_numbers"]'
 MOVEMENT_QUANTITY_ADD_ALL_BUTTON = '.js-qtypicker-cell span[class*="add-all"]'
 MOVEMENT_QUANTITY_ADD_ALL_BUTTON_SERIAL = '.js-serialpicker-root span[class*="add-all"]'
-SUBMIT_QUANTITY_MODAL_BTN = '.js-prodedit-submit'
+MOVEMENT_SUBMIT_QUANTITY_MODAL_BUTTON = '.js-prodedit-submit'
+
+MOVEMENT_COMMENTS_AREA = '#l-wh-comments'
+
+MOVEMENT_SUBMIT_BUTTON = '.js-wh-move-create-submit'
