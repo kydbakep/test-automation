@@ -2,7 +2,9 @@
   <dictionary name="tober">
     <words>
       <w>cashbox</w>
+      <w>cbox</w>
       <w>chromedriver</w>
+      <w>fltable</w>
       <w>geckodriver</w>
       <w>gitignore</w>
       <w>lname</w>

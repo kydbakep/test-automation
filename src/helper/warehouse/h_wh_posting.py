@@ -7,11 +7,11 @@ from src.helper.warehouse.selectors.s_wh_posting import *
 class WarehousePostingHelper:
 
     def __init__(self):
-        self.__create_new_posting_dialog = s(POSTING_CREATE_DIALOG)
+        self.__create_new_posting_dialog = s(POSTING_CREATE_DIALOG_FACE)
         self.__create_new_posting_button = s(POSTING_CREATE_NEW_BUTTON)
         # SUPPLIER
         self.__supplier_input = s(POSTING_SUPPLIER_INPUT)
-        self.__supplier_dropdown_target = POSTING_SUPPLIER_DROPDOWN_TARGET_XPATH_F
+        self.__supplier_dropdown_target = POSTING_SUPPLIER_DROPDOWN_TARGET_X_F
         # new client
         self.__add_new_client_plus_button = s(POSTING_ADD_NEW_CLIENT_PLUS_BUTTON)
         self.__add_new_client_dropdown_button = s(POSTING_ADD_NEW_CLIENT_DROPDOWN_BUTTON)
