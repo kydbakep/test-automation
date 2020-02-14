@@ -46,7 +46,8 @@ class TestWarehouseMovement(RegisterFixture):
 
         residue_page = PageWarehouseResidue()
         residue_page.open_page()
-        residue = residue_page.get_current_residue(product_name=goods_data['title'])
+        residue_new = residue_page.get_current_residue(product_name=goods_data['title'], stock_name=new_local_stock)
+        residue_default = residue_page.get_current_residue(product_name=goods_data['title'], stock_name=default_stock)
 
-        assert residue == goods_data['quantity'] - quantity_for_move
-        pass
+        assert residue_default == goods_data['quantity'] - quantity_for_move
+        assert residue_new == quantity_for_move

@@ -33,3 +33,5 @@ TABLE_BODY = {'table': '#residue_table',
               'zero': 'div[data-body-cell="price-145042"]',
               'repair': 'div[data-body-cell="price-145040"]',
               'warranty': 'div[data-body-cell="warranty"]'}
+
+TARGET_GOODS_DIALOG_XPH_F = "//div[contains(@class, 'js-header-lside')]//div[@class='b-ddd-title__title'][text()='{}']"
