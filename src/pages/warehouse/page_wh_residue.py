@@ -24,7 +24,7 @@ class PageWarehouseResidue:
         self.__assure_page_loaded()
 
     def __assure_page_loaded(self, wait_time=4):
-        self.__residue_table.should(be.visible, wait_time)
+        self.__residue_table.with_(timeout=wait_time).should(be.visible)
         s(PRELOADER_SPINNER).should(be.not_.visible)
 
     def is_page_loaded(self):

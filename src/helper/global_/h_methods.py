@@ -33,7 +33,6 @@ def is_element_displayed(selector_or_element, timeout=1):
             raise TypeError(f'\nUnknown element or selector type: {selector_or_element}')
     except (TypeError, TimeoutException, NoSuchElementException,
             ElementNotVisibleException, StaleElementReferenceException) as e:
-        print(f'\n\n!!! Exception handled:{e}\n\n')
         displayed = False
 
     return displayed
@@ -73,7 +72,7 @@ def update_table_component():
             for spinner in loaders:
                 spinner.should(be.not_.visible)
     except(NoSuchElementException, TimeoutException, StaleElementReferenceException, TypeError):
-        s(PRELOADER_SPINNER).should(be.not_.visible, 10)
+        s(PRELOADER_SPINNER).with_(timeout=10).should(be.not_.visible)
 
 
 def get_fresh_document_label():

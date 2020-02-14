@@ -1,4 +1,3 @@
-from selene import Config
 from selene.api import s, be
 from selene.support.shared import browser
 
@@ -35,7 +34,7 @@ class PageWarehouseStock(WarehouseStockHelper):
         self.__assure_page_loaded()
 
     def __assure_page_loaded(self, wait_time=4):
-        self.__stock_create_button.should(be.visible, wait_time)
+        self.__stock_create_button.with_(timeout=wait_time).should(be.visible)
         s(PRELOADER_SPINNER).should(be.not_.visible)
 
     def __create_stock(self, name=None, local=True, finish=True):
@@ -54,7 +53,7 @@ class PageWarehouseStock(WarehouseStockHelper):
     def __save_stock_dialog(self, finish=True):
         self.__stock_save_button.click()
         if finish:
-            self.__stock_creation_dialog.with_(Config(timeout=10)).should(be.not_.visible)
+            self.__stock_creation_dialog.with_(timeout=10).should(be.not_.visible)
 
     def create_local_stock(self, name=None, finish=True):
         return self.__create_stock(name=name, local=True, finish=finish)

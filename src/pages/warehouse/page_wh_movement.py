@@ -36,7 +36,7 @@ class PageWarehouseMovement:
         self.__assure_page_loaded()
 
     def __assure_page_loaded(self, wait_time=4):
-        self.__movement_create_button.should(be.visible, wait_time)
+        self.__movement_create_button.with_(timeout=wait_time).should(be.visible)
         s(PRELOADER_SPINNER).should(be.not_.visible)
 
     def open_movement_dialog(self):

@@ -28,7 +28,7 @@ class TestHelperMethods:
     def test_is_element_displayed(self, remonline_start_page, field_type):
         field = self.ELEMENTS[field_type]
         if field == 'web_element':
-            field = browser.element(f'#{self.FIELD_ID}')()
+            field = s(f'#{self.FIELD_ID}')
         assert is_element_displayed(field, timeout=3)
 
     @pytest.mark.parametrize('field_type', ELEMENTS)
@@ -36,7 +36,7 @@ class TestHelperMethods:
         field = self.ELEMENTS[field_type]
         if field == 'web_element':
             try:
-                field = browser.element(f'#{self.FIELD_ID}')()
+                field = s(f'#{self.FIELD_ID}')
             except NoSuchElementException:
                 field = None
         assert not is_element_displayed(field)
