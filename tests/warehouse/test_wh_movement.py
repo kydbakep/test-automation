@@ -23,6 +23,7 @@ class TestWarehouseMovement(RegisterFixture):
 
     @pytest.mark.s03t132
     def test_create_movement(self):
+        quantity_for_move = 2
         warehouse_page = PageWarehouse()
         warehouse_page.open_settings_tab()
 
@@ -40,10 +41,12 @@ class TestWarehouseMovement(RegisterFixture):
         movement_page.select_stock_from(default_stock)
         movement_page.select_stock_to(new_local_stock)
         movement_page.select_goods_from_dropdown(goods_name=goods_data['title'])
-        movement_page.set_quantity(goods_data['quantity'] - 1, serials=goods_data['serials'])
-        move_doc = movement_page.move()
+        movement_page.set_quantity(quantity_for_move, serials=goods_data['serials'])
+        movement_page.move()
 
         residue_page = PageWarehouseResidue()
-        residue = residue_page.get_current_residue(goods_name=goods['name'])
+        residue_page.open_page()
+        residue = residue_page.get_current_residue(product_name=goods_data['title'])
 
-        assert residue == goods['count']
+        assert residue == goods_data['quantity'] - quantity_for_move
+        pass

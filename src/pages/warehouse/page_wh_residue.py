@@ -12,6 +12,7 @@ class PageWarehouseResidue:
         self.__residue_table = s(TABLE_BODY['table'])
         self.__residue_row = s(TABLE_BODY['row'])
         self.__goods_row = TABLE_BODY['row']
+        self.__target_row_f = TABLE_BODY['row_by_title']
         if goods_name:
             self.__target_goods_row = by.xpath(TABLE_BODY['row_by_title'].format(name=goods_name))
 
@@ -45,3 +46,9 @@ class PageWarehouseResidue:
     def __get_checkbox_element_for_target_row(order_id):
         element_selector = f'label[for="residue_table-checkbox-{order_id}"]'
         return element_selector
+
+    def get_current_residue(self, product_name):
+        row_sel = self.__target_row_f.format(product_name)
+        residue_sel = row_sel + '/div[@data-body-cell="residue"]'
+        residue = s(by.xpath(residue_sel)).get(query.text)
+        return int(residue)

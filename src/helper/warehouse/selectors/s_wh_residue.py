@@ -22,7 +22,7 @@ TABLE_COLUMNS_CHECKBOXES = {'code': '[data-cid="table-column-dp"] label[for="cod
 # TABLE
 TABLE_BODY = {'table': '#residue_table',
               'row': 'div[data-cid="table-body-row"]',
-              'row_by_title': "//div[@data-body-cell='title'][.='{name}']//ancestor::div[@data-cid='table-body-row']",
+              'row_by_title': "//div[@data-body-cell='title'][.='{}']//ancestor::div[@data-cid='table-body-row']",
               'title': 'div[data-body-cell="title"]',
               'code': 'div[data-body-cell="code"]',
               'article': 'div[data-body-cell="article"]',
