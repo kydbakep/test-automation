@@ -29,7 +29,7 @@ class TestHelperMethods:
         field = self.ELEMENTS[field_type]
         if field == 'web_element':
             field = s(f'#{self.FIELD_ID}')
-        assert is_element_displayed(field, timeout=3)
+        assert is_element_displayed(field, timeout=5)
 
     @pytest.mark.parametrize('field_type', ELEMENTS)
     def test_is_element_not_displayed(self, google_page, field_type):
