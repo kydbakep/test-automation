@@ -26,21 +26,21 @@ class PageWarehousePosting(WarehousePostingHelper):
 
     def create_random_posting(self,
                               supplier=None,
-                              stock='Склад',
-                              serial=False,
-                              quantity=1,
+                              stock: str = 'Склад',
+                              serial: bool = False,
+                              products: int = 1,
                               comment=None,
                               invoice=None,
                               category=None,  # Should be 'parts' or 'store'. Default: 'parts'
                               barcode=None,
-                              mixed=False,
-                              mixed_serials=1,
-                              mixed_normal=1):
+                              mixed: bool = False,
+                              mixed_serials: int = 1,
+                              mixed_normal: int = 1):
 
         if mixed:
             data = get_mixed_random_goods_data(serial_goods_qty=mixed_serials, normal_goods_qty=mixed_normal)
         else:
-            data = get_random_goods_data(serial=serial, quantity=quantity)
+            data = get_random_goods_data(serial=serial, quantity=products)
 
         if supplier:
             data['supplier']['name'] = supplier

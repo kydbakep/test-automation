@@ -18,6 +18,7 @@ ORDERS_URL = "#!/orders"
 
 # Shop
 SHOP_URL = "#!/shop"
+SALES_URL = "#!/shop"
 
 # Warehouse
 WAREHOUSE_URL = '#!/warehouse'

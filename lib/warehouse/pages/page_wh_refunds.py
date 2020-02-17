@@ -9,7 +9,6 @@ class PageWarehousePostingRefunds(PageWarehousePosting):
         super().__init__()
 
         self.__close_refund_dialog_button = s(REFUND_DIALOG_CLOSE_BUTTON)
-
         self.__make_refund_button = s(REFUND_SUBMIT_BUTTON)
 
     def close_dialog_by_button(self):
