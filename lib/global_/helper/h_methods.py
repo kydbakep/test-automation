@@ -9,7 +9,7 @@ from selenium.webdriver.support.expected_conditions import visibility_of
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 
-from src.helper.global_.selectors.sel_global_project import *
+from lib.main.selectors.sel_global_project import *
 
 
 # MASK

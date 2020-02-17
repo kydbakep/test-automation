@@ -1,4 +1,4 @@
-from src.helper.global_.randomizer import get_random_first_name, get_random_last_name
+from lib.randomizer import get_random_first_name, get_random_last_name
 
 REGISTRATION_DATA = {
     'first_name': get_random_first_name(),
