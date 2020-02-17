@@ -1,7 +1,7 @@
 from selene.api import s, be, by
 
-from src.helper.global_.h_methods import is_element_displayed, set_select_option
-from src.helper.warehouse.selectors.s_wh_posting import *
+from lib.global_.helper.h_methods import is_element_displayed, set_select_option
+from lib.warehouse.selectors.s_wh_posting import *
 
 
 class WarehousePostingHelper:

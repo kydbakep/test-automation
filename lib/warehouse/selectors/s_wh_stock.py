@@ -13,7 +13,7 @@ STOCK_DELETE_CATEGORY_BUTTON = '.js-remove-button'
 STOCK_CREATE_DIALOG = 'div[data-cid="warehouse_item_dialog"]'
 STOCK_CREATE_TITLE_INPUT = f'{STOCK_CREATE_DIALOG} #l-wh-title'
 STOCK_CREATE_RADIO_BUTTON_LOCAL = 'label[for="l-wh-type-local"] .h-radio'
-STOCK_CREATE_RADIO_BUTTON_GLOBAL = 'label[for="l-wh-type-global"] .h-radio'
+STOCK_CREATE_RADIO_BUTTON_GLOBAL = 'label[for="l-wh-type-global_"] .h-radio'
 
 STOCK_USER_ACCESS_CHECKBOX_ALL = '.js-employees label[for="cb"] span'
 STOCK_USER_ACCESS_CHECKBOX_USER_XPATH = "//div[@class='b-table__body'][.='{user}']//label/span[@class='h-checkbox']"

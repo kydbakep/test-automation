@@ -1,17 +1,17 @@
 import os
+
 from selene.api import config
-from selene.browser import set_driver, driver
-
-from src.lib.lib_url import DEV_URL, NEXT_URL
-
+from selene.support.shared import browser
 from selenium import webdriver
 from selenium.webdriver.chrome.webdriver import Options as Chrome
+
+from lib.url.lib_url import DEV_URL, NEXT_URL
 
 BROWSER_NAME = 'chrome'
 HEADLESS_MODE = False
 
 
-def get_default_url(url=DEV_URL):
+def get_default_url(url=NEXT_URL):
     if os.environ.get('ci_url'):
         address = os.environ['ci_url']
     else:
@@ -46,4 +46,4 @@ class Settings:
     def __init__(self, headless=HEADLESS_MODE):
         set_base_url()
         if headless:
-            set_driver(get_configured_chrome(headless))
+            browser.set_driver(get_configured_chrome(headless))

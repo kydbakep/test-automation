@@ -2,7 +2,7 @@
 .idea/
 allure-report
 # ===================================================================
-# This project
+# This framework
 # ===================================================================
 
 .DS_Store
@@ -119,11 +119,11 @@ celerybeat-schedule
 venv/
 ENV/
 
-# Spyder project settings
+# Spyder framework settings
 .spyderproject
 .spyproject
 
-# Rope project settings
+# Rope framework settings
 .ropeproject
 
 # mkdocs documentation

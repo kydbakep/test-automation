@@ -1,10 +1,10 @@
 from selene.api import s, be
 from selene.support.shared import browser
 
-from src.helper.global_.h_methods import set_select_option, get_fresh_document_label
-from src.helper.global_.selectors.sel_global_project import PRELOADER_SPINNER
-from src.helper.warehouse.selectors.s_wh_movement import *
-from src.lib.lib_url import WH_MOVE_URL
+from lib.global_.helper.h_methods import set_select_option, get_fresh_document_label
+from lib.main.selectors.sel_global_project import PRELOADER_SPINNER
+from lib.warehouse.selectors.s_wh_movement import *
+from lib.url.lib_url import WH_MOVE_URL
 
 
 class PageWarehouseMovement:

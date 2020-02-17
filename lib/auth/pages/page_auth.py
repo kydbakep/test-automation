@@ -1,11 +1,11 @@
 from selene import Config
 from selene.api import s, be, browser
 
+from lib.auth.selectors.sel_auth_page import *
+from lib.auth.test_data.td_registration import REGISTRATION_DATA
+from lib.global_.helper.h_methods import set_select_option
+from lib.url.lib_url import LOGIN_URL, REGISTRATION_URL
 from settings.s_browser import Settings
-from src.helper.global_.h_methods import set_select_option
-from src.helper.global_.test_data.td_registration import REGISTRATION_DATA
-from src.lib.lib_url import LOGIN_URL, REGISTRATION_URL
-from src.helper.global_.selectors.sel_auth_page import *
 
 
 class PageAuth(Settings):

@@ -1,7 +1,7 @@
-from src.helper.global_.fixtures.f_browser import RegisterFixture
-from src.pages.warehouse.page_wh_core import PageWarehouse
-from src.pages.warehouse.page_wh_posting import PageWarehousePosting
-from src.pages.warehouse.page_wh_refunds import PageWarehousePostingRefunds
+from lib.auth.fixtures.f_browser import RegisterFixture
+from lib.warehouse.pages.page_wh_core import PageWarehouse
+from lib.warehouse.pages.page_wh_posting import PageWarehousePosting
+from lib.warehouse.pages.page_wh_refunds import PageWarehousePostingRefunds
 
 
 class TestWarehousePostingRefunds(RegisterFixture):
@@ -21,4 +21,3 @@ class TestWarehousePostingRefunds(RegisterFixture):
         refunds_page = PageWarehousePostingRefunds()
         dialog_closed = refunds_page.close_dialog_by_button()
         assert dialog_closed
-        pass

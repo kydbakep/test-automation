@@ -1,12 +1,11 @@
 from selene.api import s, be
 from selene.support.shared import browser
 
-from src.lib.lib_url import WAREHOUSE_URL
-
-from src.helper.global_.randomizer import get_random_stock_name
-from src.helper.global_.selectors.sel_global_project import DIALOG_MASK_H, PRELOADER_SPINNER
-from src.helper.warehouse.h_wh_stock import WarehouseStockHelper
-from src.helper.warehouse.selectors.s_wh_stock import *
+from lib.main.selectors.sel_global_project import DIALOG_MASK_H, PRELOADER_SPINNER
+from lib.randomizer import get_random_stock_name
+from lib.url.lib_url import WAREHOUSE_URL
+from lib.warehouse.helper.h_wh_stock import WarehouseStockHelper
+from lib.warehouse.selectors.s_wh_stock import *
 
 
 class PageWarehouseStock(WarehouseStockHelper):

@@ -1,6 +1,6 @@
 import pytest
-from src.helper.global_.fixtures.f_browser import RegisterFixture
-from src.pages.warehouse.page_wh_core import PageWarehouse
+from lib.auth.fixtures.f_browser import RegisterFixture
+from lib.warehouse.pages.page_wh_core import PageWarehouse
 
 
 class TestWarehousePage(RegisterFixture):

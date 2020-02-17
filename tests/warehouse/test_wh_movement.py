@@ -1,11 +1,11 @@
 import pytest
 
-from src.helper.global_.fixtures.f_browser import RegisterFixture
-from src.pages.warehouse.page_wh_core import PageWarehouse
-from src.pages.warehouse.page_wh_movement import PageWarehouseMovement
-from src.pages.warehouse.page_wh_posting import PageWarehousePosting
-from src.pages.warehouse.page_wh_residue import PageWarehouseResidue
-from src.pages.warehouse.page_wh_stock import PageWarehouseStock
+from lib.auth.fixtures.f_browser import RegisterFixture
+from lib.warehouse.pages.page_wh_core import PageWarehouse
+from lib.warehouse.pages.page_wh_movement import PageWarehouseMovement
+from lib.warehouse.pages.page_wh_posting import PageWarehousePosting
+from lib.warehouse.pages.page_wh_residue import PageWarehouseResidue
+from lib.warehouse.pages.page_wh_stock import PageWarehouseStock
 
 
 class TestWarehouseMovement(RegisterFixture):

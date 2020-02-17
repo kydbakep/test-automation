@@ -1,7 +1,6 @@
 from selene.api import browser, be, s, ss, query
-from selene.core.configuration import Config
 from selene.core.entity import Element, Collection
-
+from selene.core.exceptions import TimeoutException as TimeOut
 from selenium.common.exceptions import NoSuchElementException, ElementNotVisibleException, \
     StaleElementReferenceException, TimeoutException
 from selenium.webdriver.remote.webelement import WebElement
@@ -24,15 +23,18 @@ def is_element_displayed(selector_or_element, timeout=1):
             WebDriverWait(driver=browser, timeout=timeout).until(visibility_of(selector_or_element))
             displayed = True
         elif type(selector_or_element) is Element:
-            displayed = selector_or_element.with_(Config(timeout=timeout)).matching(be.visible)
+            selector_or_element.with_(timeout=timeout).should(be.visible)
+            displayed = True
         elif type(selector_or_element) is Collection:
-            displayed = selector_or_element[0].with_(Config(timeout=timeout)).matching(be.visible)
+            selector_or_element[0].with_(timeout=timeout).should(be.visible)
+            displayed = True
         elif type(selector_or_element) in (str, tuple):
-            displayed = browser.with_(Config(timeout=timeout)).element(selector_or_element).matching(be.visible)
+            browser.with_(timeout=timeout).element(selector_or_element).should(be.visible)
+            displayed = True
         else:
             raise TypeError(f'\nUnknown element or selector type: {selector_or_element}')
-    except (TypeError, TimeoutException, NoSuchElementException,
-            ElementNotVisibleException, StaleElementReferenceException) as e:
+    except (TypeError, TimeOut, TimeoutException, NoSuchElementException, ElementNotVisibleException,
+            StaleElementReferenceException):
         displayed = False
 
     return displayed

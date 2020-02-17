@@ -1,9 +1,9 @@
 from selene.api import s, be
 from selene.support.shared import browser
 
-from src.helper.global_.selectors.sel_global_project import PRELOADER_SPINNER
-from src.helper.warehouse.selectors.s_wh_core import *
-from src.lib.lib_url import WAREHOUSE_URL
+from lib.main.selectors.sel_global_project import PRELOADER_SPINNER
+from lib.warehouse.selectors.s_wh_core import *
+from lib.url.lib_url import WAREHOUSE_URL
 
 
 class PageWarehouse:

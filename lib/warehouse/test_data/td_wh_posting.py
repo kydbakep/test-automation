@@ -1,4 +1,4 @@
-from src.helper.global_.randomizer import *
+from lib.randomizer import *
 
 
 def __get_random_items_data(serial=False):

@@ -1,6 +1,6 @@
 from selene.api import s, by, be
 
-from src.helper.global_.selectors.sel_main_page import AVATAR_SEL
+from lib.main.selectors.sel_main_page import AVATAR_SEL
 
 
 class PageMain:

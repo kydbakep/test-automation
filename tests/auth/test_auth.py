@@ -1,5 +1,5 @@
-from src.helper.global_.fixtures.f_browser import RegisterFixture
-from src.pages.page_main import PageMain
+from lib.auth.fixtures.f_browser import RegisterFixture
+from lib.main.pages.page_main import PageMain
 
 
 class TestAuth(RegisterFixture):

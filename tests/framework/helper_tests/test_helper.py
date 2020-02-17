@@ -2,7 +2,8 @@ import pytest
 from selene.api import by, s, ss, browser
 from selenium.common.exceptions import NoSuchElementException
 
-from src.helper.global_.h_methods import is_element_displayed
+from lib.global_.helper.h_methods import is_element_displayed
+from settings.s_browser import get_default_url
 
 
 @pytest.mark.tests_for_helper
@@ -10,7 +11,7 @@ class TestHelperMethods:
 
     @pytest.fixture(scope='session')
     def remonline_start_page(self):
-        browser.open('https://dev.remonline.ru')
+        browser.open(get_default_url())
 
     @pytest.fixture(scope='session')
     def google_page(self):
@@ -29,7 +30,7 @@ class TestHelperMethods:
         field = self.ELEMENTS[field_type]
         if field == 'web_element':
             field = s(f'#{self.FIELD_ID}')
-        assert is_element_displayed(field, timeout=5)
+        assert is_element_displayed(field, timeout=4)
 
     @pytest.mark.parametrize('field_type', ELEMENTS)
     def test_is_element_not_displayed(self, google_page, field_type):
@@ -39,4 +40,4 @@ class TestHelperMethods:
                 field = s(f'#{self.FIELD_ID}')
             except NoSuchElementException:
                 field = None
-        assert not is_element_displayed(field)
+        assert not is_element_displayed(field, 0.5)

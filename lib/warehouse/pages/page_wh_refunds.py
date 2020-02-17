@@ -1,7 +1,7 @@
 from selene.api import s, be
 
-from src.helper.warehouse.selectors.s_wh_refunds import *
-from src.pages.warehouse.page_wh_posting import PageWarehousePosting
+from lib.warehouse.pages.page_wh_posting import PageWarehousePosting
+from lib.warehouse.selectors.s_wh_refunds import *
 
 
 class PageWarehousePostingRefunds(PageWarehousePosting):

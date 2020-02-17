@@ -1,8 +1,8 @@
 import pytest
 from selene.support.shared import browser
 
-from src.helper.global_.randomizer import get_random_email, get_random_low_string
-from src.pages.page_auth import PageAuth
+from lib.auth.pages.page_auth import PageAuth
+from lib.randomizer import get_random_email, get_random_low_string
 
 
 class RegisterFixture:

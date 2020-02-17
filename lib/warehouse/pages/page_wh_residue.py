@@ -1,10 +1,10 @@
 from selene.api import s, by, be, query
 from selene.support.shared import browser
 
-from src.helper.global_.h_methods import set_select_option
-from src.helper.global_.selectors.sel_global_project import PRELOADER_SPINNER
-from src.helper.warehouse.selectors.s_wh_residue import TABLE_BODY, WAREHOUSE_FILTER_SELECT, TARGET_GOODS_DIALOG_XPH_F
-from src.lib.lib_url import WH_RESIDUE_URL
+from lib.global_.helper.h_methods import set_select_option
+from lib.main.selectors.sel_global_project import PRELOADER_SPINNER
+from lib.url.lib_url import WH_RESIDUE_URL
+from lib.warehouse.selectors.s_wh_residue import *
 
 
 class PageWarehouseResidue:

@@ -1,13 +1,13 @@
 from selene.api import s, by, be
 from selene.support.shared import browser
 
-from src.helper.global_.h_methods import get_fresh_document_label
-from src.helper.warehouse.h_wh_posting import WarehousePostingHelper
-from src.helper.warehouse.selectors.s_wh_posting import *
-from src.helper.warehouse.selectors.s_wh_refunds import REFUND_DIALOG
-from src.helper.warehouse.test_data.td_wh_posting import get_random_goods_data, get_mixed_random_goods_data
-from src.pages.warehouse.page_wh_core import PageWarehouse
-from src.lib.lib_url import WH_POSTING_URL
+from lib.global_.helper.h_methods import get_fresh_document_label
+from lib.url.lib_url import WH_POSTING_URL
+from lib.warehouse.helper.h_wh_posting import WarehousePostingHelper
+from lib.warehouse.pages.page_wh_core import PageWarehouse
+from lib.warehouse.selectors.s_wh_posting import *
+from lib.warehouse.selectors.s_wh_refunds import REFUND_DIALOG
+from lib.warehouse.test_data.td_wh_posting import get_random_goods_data, get_mixed_random_goods_data
 
 
 class PageWarehousePosting(WarehousePostingHelper):
