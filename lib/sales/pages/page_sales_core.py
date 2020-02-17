@@ -1,4 +1,4 @@
-from selene.api import s, be
+from selene.api import be
 from selene.support.shared import browser
 
 from lib.main.selectors.sel_global_project import PRELOADER_SPINNER
@@ -23,18 +23,21 @@ class PageSales(SalesHelper):
         self.__preloader.should(be.not_.visible)
 
     def __open_new_sale_dialog(self):
-        self.__sales_create_button.should(be.clickable).click()
-        self.__sales_create_dialog.should(be.visible)
+        self._sales_create_button.should(be.clickable).click()
+        self._sales_create_dialog.should(be.visible)
 
     def create_sale(self,
                     goods_name: str,
                     quantity: int = 1,
-                    from_cell: str = 'Ячейка 1',
+                    from_cell: str = None,
                     price: int = 0,
                     discount: int = 0,
                     warranty: dict = None):
+        self.__open_new_sale_dialog()
         self._set_client()
         self._set_stock()
-        self._set_count()
         self._set_product(goods_name)
+
+        self._set_count(quantity, from_cell)
+        self._save_sale()
         pass
