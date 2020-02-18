@@ -1,4 +1,4 @@
-from selene.api import s, be, by
+from selene.api import s, ss, be, by
 
 from lib.global_.helper.h_methods import is_element_displayed, set_select_option
 from lib.warehouse.selectors.s_wh_posting import *
@@ -40,6 +40,9 @@ class WarehousePostingHelper:
         self.__serial_numbers_frame = s(POSTING_NEW_PRODUCT_SERIAL_NUMBERS_FRAME)
         self.__serial_number_input = s(POSTING_NEW_PRODUCT_SERIAL_NUMBERS_INPUT)
         self.__serial_number_added = POSTING_NEW_PRODUCT_SERIAL_NUMBERS_ADDED_NUMBER_F
+        # VIEW
+        self._posting_view_product_title = s(POSTING_VIEW_PRODUCT_TITLE)
+        self._posting_view_product_titles = ss(POSTING_VIEW_PRODUCT_TITLE)
 
     def set_supplier(self, supplier, quick=True):
         # for now, supplier is supplier name. In future, it be dict with enhanced data

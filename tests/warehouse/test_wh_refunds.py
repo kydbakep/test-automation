@@ -24,10 +24,12 @@ class TestWarehousePostingRefunds(RegisterFixture):
         # sale goods here
         sales_page = PageSales()
         sales_page.open_page()
-        sales_page.create_sale(goods_name=goods_for_sale['title'], quantity=goods_for_sale['quantity'])
+        sale_doc = sales_page.create_sale(goods_name=goods_for_sale['title'], quantity=goods_for_sale['quantity']-1)
 
+        posting_page.open_page()
         posting_page.open_document(posting_doc)
         posting_page.open_refund_dialog()
         refunds_page = PageWarehousePostingRefunds()
+        data = refunds_page._get_refund_goods_details(goods_for_check['title'])
         dialog_closed = refunds_page.close_dialog_by_button()
         assert dialog_closed

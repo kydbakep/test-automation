@@ -1,6 +1,7 @@
 from selene.api import be
 from selene.support.shared import browser
 
+from lib.global_.helper.h_methods import get_fresh_document_label
 from lib.main.selectors.sel_global_project import PRELOADER_SPINNER
 from lib.sales.helper.h_sales import SalesHelper
 from lib.sales.selectors.s_sales import *
@@ -40,4 +41,5 @@ class PageSales(SalesHelper):
 
         self._set_count(quantity, from_cell)
         self._save_sale()
-        pass
+        label = get_fresh_document_label()
+        return label

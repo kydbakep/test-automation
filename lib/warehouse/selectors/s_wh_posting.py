@@ -39,6 +39,9 @@ POSTING_NEW_PRODUCT_SERIAL_NUMBERS_ADDED_NUMBER_F = '.js-labeler-badges [data-ta
 # ADD TO POSTING
 POSTING_NEW_PRODUCT_ADD_BUTTON = '.js-wh-income-create-add'
 
+# POSTING VIEW DIALOG
+POSTING_VIEW_PRODUCT_TITLE = 'div[data-cid="item_title_from_fltable"]'
+
 # CLIENT DIALOG
 POSTING_CLIENT_DIALOG = '[data-cid="client_dialog"]'
 POSTING_CLIENT_DIALOG_NAME_INPUT = f'{POSTING_CLIENT_DIALOG} input[name="name"]'
