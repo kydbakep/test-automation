@@ -4,8 +4,10 @@ REFUND_DIALOG_CLOSE_BUTTON = f'{REFUND_DIALOG} .b-close'
 REFUND_DIALOG_X = "//div[@data-cid='SupplierRefundsEditor']/div[contains(@class, 'js-dialog-face')]"
 REFUND_TARGET_ROW_X = "{0}//div[label[contains(@class, 'b-label')][contains(text(),'{1}')]]" \
                       "//ancestor::div[contains(@class, 'la-2form__row')]"
-REFUND_DOCUMENT_ROW_X_F = REFUND_TARGET_ROW_X.format(REFUND_DIALOG_X, 'Оприходование')
-REFUND_SUPPLIER_ROW_X_F = REFUND_TARGET_ROW_X.format(REFUND_DIALOG_X, 'Поставщик')
+REFUND_DOCUMENT_ROW_X = REFUND_TARGET_ROW_X.format(REFUND_DIALOG_X, 'Оприходование')
+REFUND_SUPPLIER_ROW_X = REFUND_TARGET_ROW_X.format(REFUND_DIALOG_X, 'Поставщик')
+REFUND_DIALOG_SUPPLIER_PASSPORT = 'div[data-cid="client_dialog"]'
+REFUND_DIALOG_SUPPLIER_PASSPORT_CLOSE_BUTTON = f'{REFUND_DIALOG_SUPPLIER_PASSPORT} .js-ceditor-cancel'
 
 REFUND_STOCK_SELECTOR = f'{REFUND_DIALOG} .js-dialog-face select[name="warehouse_id"]'
 REFUND_TARGET_GOODS_X_F = REFUND_DIALOG_X + '//span[contains(@id, "_viewer_link")][text()="{}"]'
@@ -28,8 +30,3 @@ REFUND_CASH_INCOME_CHECKBOX_LABEL = f'{REFUND_CASH_INCOME_CHECKBOX_ELEMENT}/labe
 REFUND_CASH_INCOME_CHECKBOX_INPUT = f'{REFUND_CASH_INCOME_CHECKBOX_ELEMENT}/input'
 
 REFUND_SUBMIT_BUTTON = f'{REFUND_DIALOG} .js-dialog-face button[type="submit"]'
-
-print(REFUND_GOODS_CURR_QUANTITY_X_F.format('fdgfdghj'))
-print(REFUND_GOODS_AVAL_QUANTITY_X_F.format('fdgfdghj'))
-print(REFUND_COMMENT)
-print(REFUND_GOODS_SUM_X_F.format('fdgfdghj'))

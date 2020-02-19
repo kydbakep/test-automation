@@ -1,15 +1,16 @@
-from selene import Config
-from selene.api import s, by, be
-from selene.support.shared import browser, config
+from selene.api import s, by, be, query
+from selene.browser import driver
+from selene.support.shared import browser
+from selenium.webdriver import ActionChains
 
 from lib.global_.helper.h_methods import get_fresh_document_label, PRELOADER_SPINNER, DIALOG_MASK_JS, \
-    NEW_DOCUMENT_YELLOW_ROW
+    is_element_displayed
 from lib.global_.selectors import NOTIFIES
 from lib.url.lib_url import WH_POSTING_URL
 from lib.warehouse.helper.h_wh_posting import WarehousePostingHelper
 from lib.warehouse.pages.page_wh_core import PageWarehouse
 from lib.warehouse.selectors.s_wh_posting import *
-from lib.warehouse.selectors.s_wh_refunds import REFUND_DIALOG
+from lib.warehouse.selectors.s_wh_refunds import REFUND_DIALOG, REFUND_DIALOG_CLOSE_BUTTON
 from lib.warehouse.test_data.td_wh_posting import get_random_goods_data, get_mixed_random_goods_data
 
 
@@ -18,14 +19,15 @@ class PageWarehousePosting(WarehousePostingHelper):
 
     def __init__(self, page_url=None):
         super().__init__()
-        self.__page_url = WH_POSTING_URL
         if page_url:
             self.__page_url = page_url
+        self._create_refund_dialog = s(REFUND_DIALOG)
+        self.__page_url = WH_POSTING_URL
         self.__preloader = s(PRELOADER_SPINNER)
         self.__document = POSTING_DOCUMENT_LABEL_X
         self.__document_view_dialog = s(POSTING_VIEW_DIALOG)
-        self.__create_refund_button = s(CREATE_REFUND_BUTTON)
-        self._create_refund_dialog = s(REFUND_DIALOG)
+        self.__create_refund_button = CREATE_REFUND_BUTTON
+        self.__close_refund_dialog_button = s(REFUND_DIALOG_CLOSE_BUTTON)
         self.__submit_button = s(POSTING_SUBMIT_BUTTON)
         self.__info_notifier = s(NOTIFIES['blue'])
 
@@ -52,9 +54,9 @@ class PageWarehousePosting(WarehousePostingHelper):
         if stock:
             data['stock'] = stock
         if comment:
-            data.update({'comment': comment})
+            data.update(dict(comment=comment))
         if invoice:
-            data.update({'invoice': invoice})
+            data.update(dict(invoice=invoice))
         if category:
             data['category'] = category
 
@@ -85,17 +87,23 @@ class PageWarehousePosting(WarehousePostingHelper):
 
     def open_refund_dialog(self):
         # import time
-        # time.sleep(3)
+        # time.sleep(10)
         # self.__info_notifier.should(be.not_.visible)
         # self._posting_view_product_title.should(be.visible)
         # self.__preloader.should(be.not_.visible)
-        # element = self.__create_refund_button.should(be.clickable)()
+        element = s(self.__create_refund_button).should(be.clickable)()
+        ActionChains(driver()).move_to_element(element).click().release().perform()
+
         # self.click_by_js(element)
-        self.__create_refund_button.should(be.clickable).click()
+        # self.__create_refund_button.should(be.clickable).should(be.enabled).click()
         self._create_refund_dialog.should(be.visible)
 
-    def click_by_js(self, element):
-        from selene.support.shared import browser
-        element = self.__create_refund_button()
-        browser.execute_script("arguments[0].click();", element)
-        pass
+    def close_refund_dialog(self):
+        if is_element_displayed(self._create_refund_dialog):
+            self.__close_refund_dialog_button.should(be.clickable).click()
+        self._create_refund_dialog.should(be.not_.visible)
+        return True
+
+    @staticmethod
+    def click_by_chains(element):
+        ActionChains(driver()).move_to_element(element).click().perform()

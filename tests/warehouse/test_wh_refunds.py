@@ -21,15 +21,20 @@ class TestWarehousePostingRefunds(RegisterFixture):
         goods_for_sale = goods[0]
         goods_for_check = goods[1]
         posting_doc = data['label']
-        # sale goods here
+
         sales_page = PageSales()
         sales_page.open_page()
-        sale_doc = sales_page.create_sale(goods_name=goods_for_sale['title'], quantity=goods_for_sale['quantity']-1)
+        sales_page.create_sale(goods_name=goods_for_sale['title'], quantity=goods_for_sale['quantity'])
 
         posting_page.open_page()
         posting_page.open_document(posting_doc)
         posting_page.open_refund_dialog()
+
         refunds_page = PageWarehousePostingRefunds()
-        data = refunds_page._get_refund_goods_details(goods_for_check['title'])
-        dialog_closed = refunds_page.close_dialog_by_button()
-        assert dialog_closed
+        products = refunds_page.get_available_goods_for_refund()
+        is_passport_opened = refunds_page.open_supplier_card()
+        is_passport_closed = refunds_page.close_supplier_card()
+        is_dialog_closed = refunds_page.close_dialog_by_button()
+
+        assert all([goods_for_check['title'] in products, not goods_for_sale['title'] in products,
+                    is_passport_opened, is_passport_closed, is_dialog_closed])
