@@ -56,11 +56,15 @@ class PageWarehousePostingRefunds(PageWarehousePosting):
         self.__supplier_passport_dialog.should(be.not_.visible)
         return True
 
-    def close_dialog_by_button(self):
+    def close_refund_dialog_by_button(self):
         self._create_refund_dialog.should(be.visible)
         self.__close_refund_dialog_button.should(be.clickable).click()
         self._create_refund_dialog.should(be.not_.visible)
         return True
+
+    def open_product_edit_dialog(self, product_name):
+        # TODO: STOPPED HERE!
+        pass
 
     def __set_stock(self, stock_name):
         set_select_option(self.__stock_select(), stock_name)

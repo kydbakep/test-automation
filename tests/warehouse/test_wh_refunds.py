@@ -36,17 +36,27 @@ class TestWarehousePostingRefunds(RegisterFixture):
         products = self.refunds.get_available_goods_for_refund()
         is_passport_opened = self.refunds.open_supplier_card()
         is_passport_closed = self.refunds.close_supplier_card()
-        is_dialog_closed = self.refunds.close_dialog_by_button()
+        is_dialog_closed = self.refunds.close_refund_dialog_by_button()
 
         assert all([goods_for_check['title'] in products, not goods_for_sale['title'] in products,
                     is_passport_opened, is_passport_closed, is_dialog_closed])
 
     def test_edit_product_with_cells_enabled(self):
         self.posting.open_page()
-        serial_product = self.posting.create_random_posting(serial=True, serial_numbers_qty=2)
-        normal_product = self.posting.create_random_posting()
+        goods = self.posting.create_random_posting(mixed=True, serial_numbers_qty=1)
+
         self.settings.open_page()
         self.settings.enable_address_storage_usage()
+
+        self.posting.open_page()
+        self.posting.open_document(goods['label'])
+        self.posting.open_refund_dialog()
+
+        product = goods['goods'][1]['title']
+        serial_product = goods['goods'][0]['title']
+
+        self.posting.open_product_edit_dialog(product_name=product)
+
         pass
 
     def test_edit_product_with_cells_disabled(self):
