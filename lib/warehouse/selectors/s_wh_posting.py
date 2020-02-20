@@ -2,6 +2,7 @@
 
 POSTING_CREATE_DIALOG = '[data-cid="create_posting_dialog"]'
 POSTING_VIEW_DIALOG = '[data-cid="view_income_dialog"]'
+POSTING_VIEW_DIALOG_CLOSE_BUTTON = f'{POSTING_VIEW_DIALOG} .b-close'
 POSTING_GOODS_CATEGORIES = {'store': '[data-node-id="361222"]', 'parts': '[data-node-id="361223"]'}
 POSTING_CREATE_DIALOG_FACE = f'{POSTING_CREATE_DIALOG} .js-dialog-face'
 POSTING_CREATE_NEW_BUTTON = '#warehouse_posting_table [data-cid="table-btn-add"]'

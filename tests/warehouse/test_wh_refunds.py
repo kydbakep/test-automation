@@ -1,6 +1,7 @@
 import pytest
 
 from lib.auth.fixtures.f_browser import RegisterFixture
+from lib.randomizer import get_random_int
 from lib.sales.pages.page_sales_core import PageSales
 from lib.settings.pages.page_settings_core import PageSettings
 from lib.warehouse.pages.page_wh_core import PageWarehouse
@@ -38,30 +39,47 @@ class TestWarehousePostingRefunds(RegisterFixture):
         is_passport_closed = self.refunds.close_supplier_card()
         is_dialog_closed = self.refunds.close_refund_dialog_by_button()
 
+        self.posting.close_document()
+
         assert all([goods_for_check['title'] in products, not goods_for_sale['title'] in products,
                     is_passport_opened, is_passport_closed, is_dialog_closed])
 
+    @pytest.mark.s03t141
     def test_edit_product_with_cells_enabled(self):
         self.posting.open_page()
-        goods = self.posting.create_random_posting(mixed=True, serial_numbers_qty=1)
+        data = self.posting.create_random_posting(mixed=True, serial_numbers_qty=get_random_int(3, 7))
+        goods = data['goods']
+        label = data['label']
 
         self.settings.open_page()
         self.settings.enable_address_storage_usage()
 
         self.posting.open_page()
-        self.posting.open_document(goods['label'])
+        self.posting.open_document(label)
         self.posting.open_refund_dialog()
 
-        product = goods['goods'][1]['title']
-        serial_product = goods['goods'][0]['title']
+        can_be_edited_with_addressed_storage = self.refunds.is_products_can_be_edited(goods)
 
-        self.refunds.open_product_edit_dialog(product_name=product)
-        is_price_set = self.refunds.set_product_price(101)
-        is_comment_set = self.refunds.set_product_comment('abra-cadabra')
-        is_quantity_set = self.refunds.set_product_quantity(goods['goods'][1]['quantity'] - 1)
+        self.posting.close_refund_dialog()
+        self.posting.close_document()
+        assert can_be_edited_with_addressed_storage
 
-        assert all([is_price_set, is_comment_set, is_quantity_set])
-        pass
-
+    @pytest.mark.s03t141
     def test_edit_product_with_cells_disabled(self):
-        pass
+        self.posting.open_page()
+        data = self.posting.create_random_posting(mixed=True, serial_numbers_qty=get_random_int(3, 7))
+        goods = data['goods']
+        label = data['label']
+
+        self.settings.open_page()
+        self.settings.disable_address_storage_usage()
+
+        self.posting.open_page()
+        self.posting.open_document(label)
+        self.posting.open_refund_dialog()
+
+        can_be_edited_with_addressed_storage = self.refunds.is_products_can_be_edited(goods)
+
+        self.posting.close_refund_dialog()
+        self.posting.close_document()
+        assert can_be_edited_with_addressed_storage

@@ -3,7 +3,10 @@ from lib.randomizer import *
 
 def __get_random_items_data(serial: bool = False, numbers_qty: int = None):
     random_suffix = get_random_low_string(5, with_digits=True)
-    quantity = get_random_int(10, 20)
+    if serial:
+        quantity = numbers_qty or get_random_int(10, 20)
+    else:
+        quantity = get_random_int(10, 20)
     data = {
         'quantity': quantity,
         'price': get_random_int(101, 999),

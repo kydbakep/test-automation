@@ -24,6 +24,13 @@ REFUND_GOODS_EDIT_BUTTON_X_F = REFUND_TARGET_GOODS_ROW_F + "//div[@data-cid='edi
 REFUND_GOODS_EDIT_MODAL_X = '//div[@data-cid="winbox-modal-root"]'
 REFUND_GOODS_EDIT_MODAL = 'div[data-cid="winbox-modal-root"]'
 REFUND_GOODS_EDIT_MODAL_QUANTITY_SINGLE_INPUT = f'{REFUND_GOODS_EDIT_MODAL} .js-qtypicker-qty-input'
+
+REFUND_GOODS_EDIT_MODAL_SERIAL_NUMBER_INPUT = f'{REFUND_GOODS_EDIT_MODAL} input[name="serial_numbers"]'
+REFUND_GOODS_EDIT_MODAL_SERIAL_NUMBER_DROPDOWN = f'{REFUND_GOODS_EDIT_MODAL} .js-snresidpicker-view-root'
+REFUND_GOODS_EDIT_MODAL_SERIAL_NUMBER_ITEM_X_F = "//tr[contains(@class, 'js-snresidpicker-li')]/td[text()='{}']"
+REFUND_GOODS_EDIT_MODAL_SERIAL_NUMBER_LABEL_X_F = "//div[@class='b-tags__tag-text'][text()='{}']"
+REFUND_GOODS_EDIT_MODAL_SERIAL_ITEMS_TOTAL_COUNT = '.js-serialpicker-total-count'
+
 REFUND_GOODS_EDIT_MODAL_PRICE_INPUT = f'{REFUND_GOODS_EDIT_MODAL} input[name="price"]'
 REFUND_GOODS_EDIT_MODAL_COMMENT_INPUT = f'{REFUND_GOODS_EDIT_MODAL} textarea[name="comment"]'
 REFUND_GOODS_EDIT_MODAL_SAVE_BUTTON = f'{REFUND_GOODS_EDIT_MODAL} .js-prodedit-submit'

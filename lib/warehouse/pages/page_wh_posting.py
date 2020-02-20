@@ -26,6 +26,7 @@ class PageWarehousePosting(WarehousePostingHelper):
         self.__preloader = s(PRELOADER_SPINNER)
         self.__document = POSTING_DOCUMENT_LABEL_X
         self.__document_view_dialog = s(POSTING_VIEW_DIALOG)
+        self.__document_close_button = s(POSTING_VIEW_DIALOG_CLOSE_BUTTON)
         self.__create_refund_button = CREATE_REFUND_BUTTON
         self.__close_refund_dialog_button = s(REFUND_DIALOG_CLOSE_BUTTON)
         self.__submit_button = s(POSTING_SUBMIT_BUTTON)
@@ -85,6 +86,12 @@ class PageWarehousePosting(WarehousePostingHelper):
         s(DIALOG_MASK_JS).should(be.not_.visible)
         target.should(be.clickable).click()
         self.__document_view_dialog.should(be.visible)
+        return True
+
+    def close_document(self):
+        if is_element_displayed(self.__document_view_dialog):
+            self.__document_close_button.should(be.visible).click()
+        self.__document_view_dialog.should(be.not_.visible)
         return True
 
     def open_refund_dialog(self):

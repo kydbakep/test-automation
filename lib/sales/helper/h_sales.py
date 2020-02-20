@@ -84,4 +84,3 @@ class SalesHelper(Configured):
             self.__sales_payment_comment_input.set_value(comment)
         self.__sales_payment_submit_button.should(be.clickable).click()
         self.__sales_payment_dialog.should(be.not_.visible)
-        pass
