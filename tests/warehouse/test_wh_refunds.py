@@ -55,8 +55,12 @@ class TestWarehousePostingRefunds(RegisterFixture):
         product = goods['goods'][1]['title']
         serial_product = goods['goods'][0]['title']
 
-        self.posting.open_product_edit_dialog(product_name=product)
+        self.refunds.open_product_edit_dialog(product_name=product)
+        is_price_set = self.refunds.set_product_price(101)
+        is_comment_set = self.refunds.set_product_comment('abra-cadabra')
+        is_quantity_set = self.refunds.set_product_quantity(goods['goods'][1]['quantity'] - 1)
 
+        assert all([is_price_set, is_comment_set, is_quantity_set])
         pass
 
     def test_edit_product_with_cells_disabled(self):

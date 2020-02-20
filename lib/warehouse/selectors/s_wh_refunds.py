@@ -19,10 +19,17 @@ REFUND_GOODS_AVAL_QUANTITY_X_F = REFUND_TARGET_GOODS_ROW_F + "//div[contains(@cl
 REFUND_GOODS_SERIAL_ICON = '//div[contains(@class, "i-sn")]'
 REFUND_GOODS_PRICE_X_F = REFUND_TARGET_GOODS_ROW_F + "//div[@data-cid='price_item_from_fltable']"
 REFUND_GOODS_SUM_X_F = REFUND_TARGET_GOODS_ROW_F + "//div[@data-cid='total_price_item_from_fltable']"
-REFUND_GOODS_EDIT_BUTTON_X_F = REFUND_TARGET_GOODS_ROW_F + "//div[@data-cid='edit_item_from_fltable']"
 
+REFUND_GOODS_EDIT_BUTTON_X_F = REFUND_TARGET_GOODS_ROW_F + "//div[@data-cid='edit_item_from_fltable']"
 REFUND_GOODS_EDIT_MODAL_X = '//div[@data-cid="winbox-modal-root"]'
+REFUND_GOODS_EDIT_MODAL = 'div[data-cid="winbox-modal-root"]'
+REFUND_GOODS_EDIT_MODAL_QUANTITY_SINGLE_INPUT = f'{REFUND_GOODS_EDIT_MODAL} .js-qtypicker-qty-input'
+REFUND_GOODS_EDIT_MODAL_PRICE_INPUT = f'{REFUND_GOODS_EDIT_MODAL} input[name="price"]'
+REFUND_GOODS_EDIT_MODAL_COMMENT_INPUT = f'{REFUND_GOODS_EDIT_MODAL} textarea[name="comment"]'
+REFUND_GOODS_EDIT_MODAL_SAVE_BUTTON = f'{REFUND_GOODS_EDIT_MODAL} .js-prodedit-submit'
+REFUND_GOODS_EDIT_MODAL_CLOSE_BUTTON = f'{REFUND_GOODS_EDIT_MODAL} #modal1_close'
 REFUND_GOODS_EDIT_MODAL_ADD_ALL_X = '//span[contains(@class, "js-qtypicker-add-all")]'
+REFUND_GOODS_EDIT_MODAL_ADD_ALL = 'span.js-qtypicker-add-all'
 REFUND_GOODS_EDIT_MODAL_ADD_ALL_SERIAL_X = '//span[contains(@class, "js-qtypicker-add-all")]'
 
 REFUND_CASH_INCOME_CHECKBOX_ELEMENT = "//label[contains(@for, '_with_cbox_tran')]//ancestor::div[@class='b-checkbox']"
