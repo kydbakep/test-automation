@@ -4,18 +4,18 @@ import string
 from faker import Faker
 
 
-def get_random_low_string(ln=16, with_digits=False):
+def get_random_low_string(ln: int = 16, with_digits: bool = False):
     if with_digits:
         return ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(ln))
     else:
         return ''.join(random.choice(string.ascii_lowercase) for _ in range(ln))
 
 
-def get_random_int(a=1, b=2):
+def get_random_int(a: int = 1, b: int = 2):
     return random.randint(a, b)
 
 
-def get_random_float(a=1, b=2):
+def get_random_float(a: int = 1, b: int = 2):
     return round(random.uniform(a, b), 2)
 
 

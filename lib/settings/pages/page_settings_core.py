@@ -1,6 +1,7 @@
 from selene.api import s, be
 from selene.support.shared import browser
 
+from lib.global_.selectors import NOTIFIES
 from lib.main.selectors.sel_global_project import PRELOADER_SPINNER
 from lib.settings.selectors.s_settings_general import ADDRESS_STORAGE_CHECKBOX_SPAN, ADDRESS_STORAGE_CHECKBOX_INPUT
 from lib.url.lib_url import *
@@ -8,6 +9,7 @@ from lib.url.lib_url import *
 
 class PageSettings:
     def __init__(self):
+        self.__info_notifier = s(NOTIFIES['blue'])
         self.__page_url = SETTINGS_COMMON_URL
         self.__general_url = SETTINGS_GENERAL_URL
         self.__general_address_storage_checkbox_span = s(ADDRESS_STORAGE_CHECKBOX_SPAN)
@@ -34,14 +36,20 @@ class PageSettings:
         browser.open(self.__page_url)
         self.__assure_page_loaded()
 
-    def __assure_page_loaded(self, wait_time=4):
-        self.__get_element_from_url(self.__general_url).with_(timeout=wait_time).should(be.visible)
+    def __assure_page_loaded(self):
+        element = self.__get_element_from_url(self.__general_url)
+        element.should(be.visible)
         s(PRELOADER_SPINNER).should(be.not_.visible)
 
     @staticmethod
     def __get_element_from_url(url_: str):
-        element = s(f'a[href={url_}]')
+        selector = f'a[href="{url_}"]'
+        element = s(selector)
         return element
+
+    def __change_address_storage_usage_state(self):
+        self.__general_address_storage_checkbox_span.click()
+        self.__info_notifier.should(be.visible)
 
     def _open_tab_using_element(self, url_: str):
         self.__get_element_from_url(url_).should(be.clickable).click()
@@ -50,6 +58,12 @@ class PageSettings:
     def _open_tab_using_url(url_: str):
         browser.get(url_)
 
-    def enable_address_storage_use(self):
+    def enable_address_storage_usage(self):
         self._open_tab_using_element(self.__general_url)
+        if not self.__general_address_storage_checkbox_input().is_selected():
+            self.__change_address_storage_usage_state()
 
+    def disable_address_storage_usage(self):
+        self._open_tab_using_element(self.__general_url)
+        if self.__general_address_storage_checkbox_input().is_selected():
+            self.__change_address_storage_usage_state()

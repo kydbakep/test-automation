@@ -111,9 +111,9 @@ class WarehousePostingHelper:
             # todo: get data from 'supplier' dict and fill all needed fields
             pass
 
-    def __add_serial_numbers(self, quantity: int, serial_numbers: list):
+    def __add_serial_numbers(self, serial_numbers: list):
         added_numbers = []
-        for i in range(quantity):
+        for i in range(len(serial_numbers)):
             serial_for_adding = serial_numbers[i]
             added_numbers.append(serial_for_adding)
             self.__serial_number_input.should(be.visible).type(serial_for_adding).press_tab()
@@ -125,7 +125,7 @@ class WarehousePostingHelper:
             if not self.__new_product_is_serial_checkbox_input().is_selected():
                 self.__new_product_is_serial_checkbox_label.click()
                 self.__serial_numbers_frame.should(be.visible)
-                added_numbers = self.__add_serial_numbers(quantity, serial_numbers)
+                added_numbers = self.__add_serial_numbers(serial_numbers)
                 return added_numbers
         else:
             self.__new_product_quantity_input.set_value(quantity)

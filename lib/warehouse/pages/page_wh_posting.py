@@ -35,19 +35,24 @@ class PageWarehousePosting(WarehousePostingHelper):
                               supplier=None,
                               stock: str = 'Склад',
                               serial: bool = False,
-                              products: int = 1,
+                              goods_qty: int = 1,
                               comment=None,
                               invoice=None,
                               category=None,  # Should be 'parts' or 'store'. Default: 'parts'
                               barcode=None,
+
                               mixed: bool = False,
-                              mixed_serials: int = 1,
-                              mixed_normal: int = 1):
+                              # if mixed goods is True
+                              normal_goods_qty: int = 1,
+                              serial_goods_qty: int = 1,
+                              serial_numbers_qty: int = None):
 
         if mixed:
-            data = get_mixed_random_goods_data(serial_goods_qty=mixed_serials, normal_goods_qty=mixed_normal)
+            data = get_mixed_random_goods_data(serial_goods_qty=serial_goods_qty,
+                                               normal_goods_qty=normal_goods_qty,
+                                               numbers_qty=serial_numbers_qty)
         else:
-            data = get_random_goods_data(serial=serial, quantity=products)
+            data = get_random_goods_data(serial=serial, quantity=goods_qty, numbers_qty=serial_numbers_qty)
 
         if supplier:
             data['supplier']['name'] = supplier
@@ -80,22 +85,11 @@ class PageWarehousePosting(WarehousePostingHelper):
         s(DIALOG_MASK_JS).should(be.not_.visible)
         target.should(be.clickable).click()
         self.__document_view_dialog.should(be.visible)
-        # self._posting_view_product_title.should(be.present).should(be.visible).should(be.clickable).double_click()
-        # s('div[data-cid="winbox-modal-root"] .b-close').should(be.clickable).click()
-        # s('div[data-cid="winbox-modal-root"] .b-close').should(be.not_.visible)
         return True
 
     def open_refund_dialog(self):
-        # import time
-        # time.sleep(10)
-        # self.__info_notifier.should(be.not_.visible)
-        # self._posting_view_product_title.should(be.visible)
-        # self.__preloader.should(be.not_.visible)
         element = s(self.__create_refund_button).should(be.clickable)()
         ActionChains(driver()).move_to_element(element).click().release().perform()
-
-        # self.click_by_js(element)
-        # self.__create_refund_button.should(be.clickable).should(be.enabled).click()
         self._create_refund_dialog.should(be.visible)
 
     def close_refund_dialog(self):

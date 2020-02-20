@@ -33,7 +33,7 @@ class TestWarehouseMovement(RegisterFixture):
 
         warehouse_page.open_posting_tab()
         posting_page = PageWarehousePosting()
-        goods_data = posting_page.create_random_posting(stock=default_stock, products=1, serial=True)['goods'][0]
+        goods_data = posting_page.create_random_posting(stock=default_stock, goods_qty=1, serial=True)['goods'][0]
 
         movement_page = PageWarehouseMovement()
         movement_page.open_page()
