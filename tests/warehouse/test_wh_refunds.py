@@ -2,11 +2,21 @@ import pytest
 
 from lib.auth.fixtures.f_browser import RegisterFixture
 from lib.randomizer import get_random_int
+from lib.warehouse.fixtures.f_wh_posting import FixturesWarehousePosting
 from lib.warehouse.wh_suite import WarehousePages
 
 
-class TestWarehousePostingRefunds(RegisterFixture):
+class TestWarehousePostingRefunds(RegisterFixture, FixturesWarehousePosting):
     pages = WarehousePages()
+
+    @pytest.mark.s03t054
+    def test_open_close_refund(self, create_posting):
+        self.pages.posting.open_document(create_posting['label'])
+        closed_by_mask = self.pages.posting.close_document_by_mask()
+        self.pages.posting.open_document(create_posting['label'])
+        closed_by_button = self.pages.posting.close_document_by_button()
+
+        assert all([closed_by_mask, closed_by_button])
 
     @pytest.mark.s03t140
     def test_salt_goods_not_displayed_in_table(self):
@@ -31,7 +41,7 @@ class TestWarehousePostingRefunds(RegisterFixture):
         is_passport_closed = self.pages.refunds.close_supplier_card()
         is_dialog_closed = self.pages.refunds.close_refund_dialog_by_button()
 
-        self.pages.posting.close_document()
+        self.pages.posting.close_document_by_button()
 
         assert all([goods_for_check['title'] in products, not goods_for_sale['title'] in products,
                     is_passport_opened, is_passport_closed, is_dialog_closed])
@@ -53,7 +63,7 @@ class TestWarehousePostingRefunds(RegisterFixture):
         can_be_edited_with_addressed_storage = self.pages.refunds.is_products_can_be_edited(goods)
 
         self.pages.posting.close_refund_dialog()
-        self.pages.posting.close_document()
+        self.pages.posting.close_document_by_button()
         assert can_be_edited_with_addressed_storage
 
     @pytest.mark.s03t141
@@ -73,5 +83,5 @@ class TestWarehousePostingRefunds(RegisterFixture):
         can_be_edited_with_addressed_storage = self.pages.refunds.is_products_can_be_edited(goods)
 
         self.pages.posting.close_refund_dialog()
-        self.pages.posting.close_document()
+        self.pages.posting.close_document_by_button()
         assert can_be_edited_with_addressed_storage
