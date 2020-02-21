@@ -1,7 +1,6 @@
 import pytest
 
 from lib.auth.fixtures.f_browser import RegisterFixture
-from lib.randomizer import get_random_int
 from lib.warehouse.fixtures.f_wh_posting import FixturesWarehousePosting
 from lib.warehouse.wh_suite import WarehousePages
 
@@ -10,27 +9,24 @@ class TestWarehousePostingRefunds(RegisterFixture, FixturesWarehousePosting):
     pages = WarehousePages()
 
     @pytest.mark.s03t054
-    def test_open_close_refund(self, create_posting):
-        self.pages.posting.open_document(create_posting['label'])
+    def test_open_close_refund_dialog(self, single_posting_class):
+        self.pages.posting.open_document(single_posting_class['label'])
         closed_by_mask = self.pages.posting.close_document_by_mask()
-        self.pages.posting.open_document(create_posting['label'])
+        self.pages.posting.open_document(single_posting_class['label'])
         closed_by_button = self.pages.posting.close_document_by_button()
 
         assert all([closed_by_mask, closed_by_button])
 
     @pytest.mark.s03t140
-    def test_salt_goods_not_displayed_in_table(self):
-        self.pages.warehouse.open_settings_tab()
-        self.pages.warehouse.open_posting_tab()
-
-        data = self.pages.posting.create_random_posting(goods_qty=2)
+    def test_salt_goods_not_displayed_in_table(self, multiple_posting_class):
+        data = multiple_posting_class
         goods = data['goods']
         goods_for_sale = goods[0]
         goods_for_check = goods[1]
         posting_doc = data['label']
 
         self.pages.sales.open_page()
-        self.pages.sales.create_sale(goods_name=goods_for_sale['title'], quantity=goods_for_sale['quantity'])
+        self.pages.sales.create_sale(goods_for_sale)
 
         self.pages.posting.open_page()
         self.pages.posting.open_document(posting_doc)
@@ -47,9 +43,9 @@ class TestWarehousePostingRefunds(RegisterFixture, FixturesWarehousePosting):
                     is_passport_opened, is_passport_closed, is_dialog_closed])
 
     @pytest.mark.s03t141
-    def test_edit_product_with_cells_enabled(self):
+    def test_edit_refunded_product_with_cells_enabled(self, single_posting_class):
         self.pages.posting.open_page()
-        data = self.pages.posting.create_random_posting(mixed=True, serial_numbers_qty=get_random_int(3, 7))
+        data = single_posting_class
         goods = data['goods']
         label = data['label']
 
@@ -67,9 +63,9 @@ class TestWarehousePostingRefunds(RegisterFixture, FixturesWarehousePosting):
         assert can_be_edited_with_addressed_storage
 
     @pytest.mark.s03t141
-    def test_edit_product_with_cells_disabled(self):
+    def test_edit_refunded_product_with_cells_disabled(self, single_posting_class):
         self.pages.posting.open_page()
-        data = self.pages.posting.create_random_posting(mixed=True, serial_numbers_qty=get_random_int(3, 7))
+        data = single_posting_class
         goods = data['goods']
         label = data['label']
 

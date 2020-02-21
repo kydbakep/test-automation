@@ -27,19 +27,20 @@ class PageSales(SalesHelper):
         self._sales_create_button.should(be.clickable).click()
         self._sales_create_dialog.should(be.visible)
 
-    def create_sale(self,
-                    goods_name: str,
-                    quantity: int = 1,
-                    from_cell: str = None,
-                    price: int = 0,
-                    discount: int = 0,
-                    warranty: dict = None):
+    @staticmethod
+    def __get_target_goods_dict_from_list(goods_list: list, target_title: str):
+        for product in goods_list:
+            if product.get('title') == target_title:
+                return product
+
+    def create_sale(self, goods: dict, quantity: int = 0, from_cell: str = ''):
+        goods_title = goods['title']
+        qty = quantity or goods['quantity']
         self.__open_new_sale_dialog()
         self._set_client()
         self._set_stock()
-        self._set_product(goods_name)
-
-        self._set_count(quantity, from_cell)
+        self._set_product(goods_title)
+        self._set_count(count=qty, cell_name=from_cell, serials=goods.get('serials'))
         self._save_sale()
         label = get_fresh_document_label()
         return label

@@ -19,6 +19,11 @@ class SelectorsSales:
     SALES_MODAL_QUANTITY_TOTAL_INPUT = f'{SALES_MODAL_FRAME} .js-qtypicker-total-count'
     SALES_MODAL_QUANTITY_SINGLE_INPUT = f'{SALES_MODAL_FRAME} .js-qtypicker-qty-input'
     SALES_MODAL_QUANTITY_TOTAL_ADD_ALL_BUTTON = f'{SALES_MODAL_FRAME} .js-qtypicker-add-all'
+    SALES_MODAL_QUANTITY_SERIAL_ADD_ALL_BUTTON = f'{SALES_MODAL_FRAME} .js-serialpicker-add-all'
+    SALES_MODAL_SERIAL_NUMBER_INPUT = f'{SALES_MODAL_FRAME} input[name="serial_numbers"]'
+    SALES_MODAL_SERIAL_NUMBER_DROPDOWN = f'{SALES_MODAL_FRAME} .js-snresidpicker-view-root'
+    SALES_MODAL_SERIAL_NUMBER_ITEM_X_F = "//tr[contains(@class, 'js-snresidpicker-li')]/td[text()='{}']"
+    SALES_MODAL_SERIAL_NUMBER_LABEL_X_F = "//div[@class='b-tags__tag-text'][text()='{}']"
     SALES_MODAL_QUANTITY_INPUT_F = "//span[contains(text(), '{}')]" \
                                    "//ancestor::div[contains(@class, 'js-qtypicker-cell')]//input"  # by cell name
     SALES_MODAL_QUANTITY_ADD_ALL_BUTTON_F = "//span[.='{}']//ancestor::div[contains(@class, 'js-qtypicker-cell')]" \
@@ -37,6 +42,8 @@ class SelectorsSales:
     SALES_PAYMENT_SUBMIT_BUTTON = f'{SALES_PAYMENT_DIALOG} button.js-cbp-submit'
 
     SALES_MODAL_SAVE_BUTTON = f'{SALES_MODAL_FRAME} button[type="submit"]'
+
+    print(SALES_MODAL_SERIAL_NUMBER_DROPDOWN)
 
 
 class Configured:

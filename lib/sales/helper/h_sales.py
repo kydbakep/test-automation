@@ -25,10 +25,15 @@ class SalesHelper(Configured):
         self.__sales_dialog_description_input = s(__selectors.SALES_DIALOG_DESCRIPTION_INPUT)
         self.__sales_dialog_warehouse_select = s(__selectors.SALES_DIALOG_STOCK_SELECT)
         self.__sales_dialog_save_button = s(__selectors.SALES_DIALOG_SAVE_BUTTON)
+
         self.__sales_modal_frame = s(__selectors.SALES_MODAL_FRAME)
         self.__sales_modal_quantity_total_input = s(__selectors.SALES_MODAL_QUANTITY_TOTAL_INPUT)
         self.__sales_modal_quantity_single_input = s(__selectors.SALES_MODAL_QUANTITY_SINGLE_INPUT)
         self.__sales_modal_quantity_total_add_all_button = s(__selectors.SALES_MODAL_QUANTITY_TOTAL_ADD_ALL_BUTTON)
+        self.__sales_modal_quantity_serial_add_all_button = s(__selectors.SALES_MODAL_QUANTITY_SERIAL_ADD_ALL_BUTTON)
+        self.__sales_modal_serial_input = s(__selectors.SALES_MODAL_SERIAL_NUMBER_INPUT)
+        self.__sales_modal_serial_label = __selectors.SALES_MODAL_SERIAL_NUMBER_LABEL_X_F
+
         self.__sales_modal_price_input = s(__selectors.SALES_MODAL_PRICE_INPUT)
         self.__sales_modal_discount_input = s(__selectors.SALES_MODAL_DISCOUNT_INPUT)
         self.__sales_modal_warranty_input = s(__selectors.SALES_MODAL_WARRANTY_INPUT)
@@ -51,14 +56,33 @@ class SalesHelper(Configured):
     def _set_stock(self, stock_name=None):
         set_select_option(self.__sales_dialog_warehouse_select(), stock_name or self.__stock_name)
 
-    def _set_count(self, count: int = 1, cell_name: str = None):
-        if cell_name:
+    def _set_count(self, count: int = 1, cell_name: str = None, serials: list = None):
+        if cell_name and not serials:
             self._cell_quantity_input.set_value(count)
         else:
-            cnt_input = self.__sales_modal_quantity_single_input
-            cnt_input.set_value(count)
+            if serials:
+                self.__set_count_serial(count, serials)
+            else:
+                self.__set_count_not_serial(count)
         self.__sales_modal_save_button.should(be.clickable).click()
         self.__sales_modal_frame.should(be.not_.visible)
+
+    def __set_count_not_serial(self, count):
+        cnt_input = self.__sales_modal_quantity_single_input
+        cnt_input.set_value(count)
+
+    def __set_count_serial(self, count, serials: list):
+        if count == len(serials):
+            self.__sales_modal_quantity_serial_add_all_button.click()
+            for num in serials:
+                s(self.__sales_modal_serial_label.format(num)).should(be.visible)
+        else:
+            added_serials = []
+            for _ in range(count):
+                num = serials.pop(0)
+                added_serials.append(num)
+                self.__sales_modal_serial_input.set_value(num)
+                s(self.__sales_modal_serial_label.format(num)).should(be.visible)
 
     def _set_goods(self, goods_name):
         self._set_product(product_name=goods_name)
