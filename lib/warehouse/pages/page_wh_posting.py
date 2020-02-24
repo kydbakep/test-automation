@@ -30,6 +30,7 @@ class PageWarehousePosting(WarehousePostingHelper):
         self.__close_refund_dialog_button = s(REFUND_DIALOG_CLOSE_BUTTON)
         self.__submit_button = s(POSTING_SUBMIT_BUTTON)
         self.__info_notifier = s(NOTIFIES['blue'])
+        self.__dialog_mask_active = s(DIALOG_MASK_JS)
 
     def create_random_posting(self,
                               supplier=None,
@@ -87,9 +88,15 @@ class PageWarehousePosting(WarehousePostingHelper):
         self.__document_view_dialog.should(be.visible)
         return True
 
-    def close_document(self):
+    def close_document_by_button(self):
         if is_element_displayed(self.__document_view_dialog):
             self.__document_close_button.should(be.visible).click()
+        self.__document_view_dialog.should(be.not_.visible)
+        return True
+
+    def close_document_by_mask(self):
+        if is_element_displayed(self.__document_view_dialog):
+            self.__dialog_mask_active.should(be.visible).click()
         self.__document_view_dialog.should(be.not_.visible)
         return True
 

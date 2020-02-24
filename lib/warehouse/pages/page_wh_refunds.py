@@ -137,7 +137,6 @@ class PageWarehousePostingRefunds(PageWarehousePosting):
             if product.get('serials'):
                 serials = product['serials']
                 is_quantity_set = self.set_product_quantity(quantity - 1, serials=serials)
-                pass
             else:
                 is_quantity_set = self.set_product_quantity(quantity - 1)
             is_price_set = self.set_product_price(get_random_int(15, 999))
