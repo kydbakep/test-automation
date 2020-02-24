@@ -32,7 +32,6 @@ def get_configured_chrome(headless=False):
     if headless:
         print('\nBrowser will start in headless mode!')
         chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--enable-automation')
     chrome_options.add_argument('--window-size=1920,1080')
     configured = webdriver.Chrome(options=chrome_options, executable_path=get_driver_path('chromedriver'))
