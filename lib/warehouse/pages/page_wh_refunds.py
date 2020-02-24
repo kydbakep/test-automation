@@ -158,5 +158,5 @@ class PageWarehousePostingRefunds(PageWarehousePosting):
         titles = []
         self.__refund_goods[0].should(be.visible)
         for product in self.__refund_goods:
-            titles.append(product.should(be.visible).text)
+            titles.append(product.should(be.visible).get(query.text))
         return titles

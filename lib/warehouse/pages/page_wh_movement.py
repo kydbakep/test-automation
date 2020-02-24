@@ -81,7 +81,7 @@ class PageWarehouseMovement:
         return tuple(added_serials)
 
     def set_comment(self, comment_text: str):
-        self.__movement_comments_area.type(comment_text)
+        self.__movement_comments_area.set_value(comment_text)
 
     def move(self):
         self.__movement_submit_button.should(be.clickable).click()

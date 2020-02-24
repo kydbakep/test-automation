@@ -1,4 +1,5 @@
 from selene.api import s, ss, be, by
+from selenium.webdriver.common.keys import Keys
 
 from lib.global_.helper.h_methods import is_element_displayed, set_select_option
 from lib.warehouse.selectors.s_wh_posting import *
@@ -77,13 +78,13 @@ class WarehousePostingHelper:
         self.__new_product_add_button.should(be.clickable).click()
 
     def __set_product_price(self, purchase, zero=0, repair=0, retail=0):
-        self.__new_product_price_purchase_input.should(be.clickable).click().set_value(purchase)
+        self.__new_product_price_purchase_input.should(be.clickable).click().set_value(purchase).press(Keys.SPACE)
         if zero:
-            self.__new_product_price_zero_input.set_value(zero)
+            self.__new_product_price_zero_input.type(zero)
         if repair:
-            self.__new_product_price_repair_input.set_value(repair)
+            self.__new_product_price_repair_input.type(repair)
         if retail:
-            self.__new_product_price_retail_input.set_value(retail)
+            self.__new_product_price_retail_input.type(retail)
 
     def __set_product_category(self, category):
         self.__new_product_category_dropdown.should(be.clickable).click()

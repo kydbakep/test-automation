@@ -1,5 +1,4 @@
 from selene.api import s, by, be
-from selene.browser import driver
 from selene.support.shared import browser
 from selenium.webdriver import ActionChains
 
@@ -95,8 +94,7 @@ class PageWarehousePosting(WarehousePostingHelper):
         return True
 
     def open_refund_dialog(self):
-        element = s(self.__create_refund_button).should(be.clickable)()
-        self.__click_by_chains(element)
+        s(self.__create_refund_button).should(be.clickable).click()
         self._create_refund_dialog.should(be.visible)
 
     def close_refund_dialog(self):
@@ -107,4 +105,4 @@ class PageWarehousePosting(WarehousePostingHelper):
 
     @staticmethod
     def __click_by_chains(element):
-        ActionChains(driver()).move_to_element(element).click().release().perform()
+        ActionChains(browser.driver).move_to_element(element).click().release().perform()

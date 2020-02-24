@@ -9,6 +9,7 @@ from lib.warehouse.pages.page_wh_posting import PageWarehousePosting
 from lib.warehouse.pages.page_wh_refunds import PageWarehousePostingRefunds
 
 
+@pytest.mark.warehouse
 class TestWarehousePostingRefunds(RegisterFixture):
     sales = PageSales()
     settings = PageSettings()

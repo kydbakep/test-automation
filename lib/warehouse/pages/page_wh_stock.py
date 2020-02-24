@@ -41,7 +41,7 @@ class PageWarehouseStock(WarehouseStockHelper):
         self.__dialog_mask.should(be.not_.visible)
         self.__stock_create_button.should(be.clickable).click()
         self.__stock_creation_dialog.should(be.visible)
-        self.__stock_title_input.type(stock_name)
+        self.__stock_title_input.set_value(stock_name)
         if local:
             self.__stock_radio_local.click()
         else:

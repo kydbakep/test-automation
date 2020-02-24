@@ -1,4 +1,5 @@
 from selene.api import s, by, be
+from selenium.webdriver.common.keys import Keys
 
 from lib.global_.helper.h_methods import set_select_option
 from lib.sales.selectors.s_sales import SelectorsSales, Configured
@@ -43,7 +44,7 @@ class SalesHelper(Configured):
     def _set_client(self, client_name=None):
         client_input = self.__sales_dialog_client_input.should(be.visible)
         client_input.should(be.clickable).click()
-        client_input.set_value(client_name or self.__client_name)
+        client_input.set(client_name or self.__client_name).press(Keys.SPACE)
         target = by.xpath(self.__sales_dialog_client_target.format(client_name or self.__client_name))
         s(target).should(be.clickable).click()
         s(target).should(be.not_.visible)
@@ -64,7 +65,7 @@ class SalesHelper(Configured):
         self._set_product(product_name=goods_name)
 
     def _set_product(self, product_name):
-        self.__sales_dialog_product_input.set_value(product_name)
+        self.__sales_dialog_product_input.type(product_name)
         target = by.xpath(self.__sales_dialog_product_target.format(product_name))
         s(target).should(be.clickable).click()
         s(target).should(be.not_.visible)

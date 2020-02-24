@@ -1,4 +1,5 @@
-from selene.api import browser, be, s, ss, query
+from selene.api import be, s, ss, query
+from selene.support.shared import browser
 from selene.core.entity import Element, Collection
 from selene.core.exceptions import TimeoutException as TimeOut
 from selenium.common.exceptions import NoSuchElementException, ElementNotVisibleException, \
@@ -20,7 +21,7 @@ def __wait_for_mask_disappear():
 def is_element_displayed(selector_or_element, timeout=1):
     try:
         if type(selector_or_element) is WebElement:
-            WebDriverWait(driver=browser, timeout=timeout).until(visibility_of(selector_or_element))
+            WebDriverWait(driver=browser.driver, timeout=timeout).until(visibility_of(selector_or_element))
             displayed = True
         elif type(selector_or_element) is Element:
             selector_or_element.with_(timeout=timeout).should(be.visible)
