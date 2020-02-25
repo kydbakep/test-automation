@@ -10,6 +10,9 @@ selenium = "==3.141.0"
 selene = "==2.0.0a21"
 pytest = "==5.3.5"
 Faker = "==4.0.0"
+elements = "*"
+pytest-xdist = "==1.31.0"
+filelock = "*"
 
 [requires]
 python_version = "3.8"

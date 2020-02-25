@@ -1,11 +1,10 @@
 import pytest
-from selene.support.shared import browser
 
 from lib.auth.pages.page_auth import PageAuth
 from lib.randomizer import get_random_email, get_random_low_string
 
 
-class RegisterFixture:
+class FixturesRegister:
 
     @staticmethod
     @pytest.fixture(scope='class', autouse=True)
@@ -17,5 +16,3 @@ class RegisterFixture:
             yield {'first_name': customer['first_name'], 'last_name': customer['last_name']}
         except Exception as e:
             print(e)
-        finally:
-            browser.quit()

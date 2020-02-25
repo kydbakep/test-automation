@@ -1,12 +1,13 @@
 import pytest
 
-from lib.auth.fixtures.f_browser import RegisterFixture
+from lib.auth.fixtures.f_browser import FixturesRegister
+from lib.global_.fixtures.f_browser_settings import FixturesSettings
 from lib.warehouse.fixtures.f_wh_posting import FixturesWarehousePosting
 from lib.warehouse.wh_suite import WarehousePages
 
 
 @pytest.mark.warehouse
-class TestWarehousePostingRefunds(RegisterFixture, FixturesWarehousePosting):
+class TestWarehousePostingRefunds(FixturesSettings, FixturesRegister, FixturesWarehousePosting):
     pages = WarehousePages()
 
     @pytest.mark.s03t054

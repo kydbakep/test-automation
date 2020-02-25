@@ -1,22 +1,14 @@
 import pytest
-from selene.api import by, s, ss, browser
+from selene.api import s, ss, by
 from selenium.common.exceptions import NoSuchElementException
 
+from lib.global_.fixtures.f_browser_settings import FixturesSettings
 from lib.global_.helper.h_methods import is_element_displayed
-from settings.s_browser import get_default_url
+from lib.helper.fixtures.f_helper import FixturesHelper
 
 
 @pytest.mark.tests_for_helper
-class TestHelperMethods:
-
-    @pytest.fixture(scope='session')
-    def remonline_start_page(self):
-        browser.open(get_default_url())
-
-    @pytest.fixture(scope='session')
-    def google_page(self):
-        browser.open('http://google.com')
-
+class TestHelperMethods(FixturesSettings, FixturesHelper):
     FIELD_ID = 'l-auth-login'
     ELEMENTS = {'css': f'#{FIELD_ID}',
                 'xpath': f"//input[@id='{FIELD_ID}']",

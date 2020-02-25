@@ -49,7 +49,7 @@ class SalesHelper(Configured):
     def _set_client(self, client_name=None):
         client_input = self.__sales_dialog_client_input.should(be.visible)
         client_input.should(be.clickable).click()
-        client_input.set(client_name or self.__client_name).press(Keys.SPACE)
+        client_input.set_value(client_name or self.__client_name).press(Keys.SPACE)
         target = by.xpath(self.__sales_dialog_client_target.format(client_name or self.__client_name))
         s(target).should(be.clickable).click()
         s(target).should(be.not_.visible)

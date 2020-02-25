@@ -1,11 +1,12 @@
 import pytest
 
+from lib.global_.fixtures.f_browser_settings import FixturesSettings
 from lib.global_.helper.h_methods import is_numbers_in_string
 from lib.randomizer import *
 
 
 @pytest.mark.tests_for_helper
-class TestRandomise:
+class TestRandomise(FixturesSettings):
 
     def test_random_float(self):
         num = get_random_float(5, 10)
