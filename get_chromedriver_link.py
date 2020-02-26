@@ -13,3 +13,4 @@ file_link = str(download_page).replace('index.html?path=', '') + 'chromedriver_l
 
 with open('chromedriver_link.txt', 'w') as link:
     link.write(file_link)
+    link.close()

@@ -16,3 +16,5 @@ RUN apt-get update
 RUN apt-get -qqy install google-chrome-stable
 
 # Install chromedriver
+RUN python $WORKDIR/get_chromedriver_link.py
+#RUN wget cat $WORKDIR/chromedriver_link.txt
