@@ -1,0 +1,7 @@
+.idea
+*/*/docker-help.*
+docker-help.txt
+**/*.tmp
+.pytest_cache
+*/*/.pytest_cache
+Pipfile*
