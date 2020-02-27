@@ -17,4 +17,4 @@ RUN apt-get -qqy install google-chrome-stable vim mc
 
 # Install chromedriver
 RUN python $WORKDIR/install_chromedriver.py
-RUN chmod -R 755 /
+RUN chmod -R 755 /home
