@@ -1,0 +1,2 @@
+class WarehouseResidueHelper:
+    pass

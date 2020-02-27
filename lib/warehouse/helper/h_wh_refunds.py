@@ -1,0 +1,2 @@
+class WarehouseRefundsHelper:
+    pass
