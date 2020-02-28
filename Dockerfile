@@ -6,7 +6,7 @@ WORKDIR = $WORKDIR
 ADD . $WORKDIR
 
 RUN mkdir /.selene && mkdir /.selene/screenshots
-RUN chmod -R 755 /.selene
+RUN chmod -R ugo-+rw /.selene
 
 RUN cd $WORKDIR && python -m venv env && . ./env/bin/activate
 RUN pip install --upgrade pip setuptools wheel
