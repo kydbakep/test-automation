@@ -5,9 +5,8 @@ RUN mkdir $WORKDIR
 WORKDIR = $WORKDIR
 ADD . $WORKDIR
 
-RUN chmod -R ugo-+rw /home
-RUN mkdir /.wdm
-RUN chmod -R ugo-+rw /.wdm
+RUN mkdir /.wdm && mkdir /.selene && mkdir /.wdm
+RUN chmod -R ugo-+rw /.selene && chmod -R ugo-+rw /.wdm
 
 RUN cd $WORKDIR && python -m venv env && . ./env/bin/activate
 RUN pip install --upgrade pip setuptools wheel
