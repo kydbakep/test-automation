@@ -1,5 +1,7 @@
 FROM python:3.8.1-buster
 
+EXPOSE 9091
+
 ARG WORKDIR=/home/orderry
 RUN mkdir $WORKDIR
 WORKDIR = $WORKDIR
