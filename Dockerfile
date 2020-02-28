@@ -24,3 +24,4 @@ RUN python $WORKDIR/install_chromedriver.py
 #RUN chmod -R 755 $WORKDIR
 #RUN chmod -R 755 $WORKDIR/.selene
 #RUN chmod -R 755 /.selene
+RUN uanme -a && users
