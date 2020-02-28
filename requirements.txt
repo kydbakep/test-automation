@@ -1,6 +1,7 @@
 selenium==3.141.0
 selene==2.0.0a21
 pytest==5.3.5
-faker==4.0.0
+faker==4.0.1
 requests==2.23.0
 scrapy==1.8.0
+pipenv==2018.11.26
