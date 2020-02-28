@@ -5,7 +5,7 @@ RUN mkdir $WORKDIR
 WORKDIR = $WORKDIR
 ADD . $WORKDIR
 
-RUN cd $WORKDIR && python -m venv env && source ./env/bin/activate
+RUN cd $WORKDIR && python -m venv env && . ./env/bin/activate
 RUN pip install --upgrade pip setuptools wheel
 RUN pip install -r $WORKDIR/requirements.txt
 
