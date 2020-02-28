@@ -3,10 +3,11 @@ FROM python:3.8.1-buster
 ARG WORKDIR=/home/orderry
 RUN mkdir $WORKDIR
 WORKDIR = $WORKDIR
-
-RUN pip install --upgrade pip setuptools wheel
-
 ADD . $WORKDIR
+
+RUN python -m venv env
+RUN source ./env/bin/activate
+RUN pip install --upgrade pip setuptools wheel
 RUN pip install -r $WORKDIR/requirements.txt
 
 # Install google chrome
