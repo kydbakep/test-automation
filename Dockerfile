@@ -2,8 +2,11 @@ FROM python:3.8.1-buster
 
 ARG WORKDIR=/home/orderry
 RUN mkdir $WORKDIR
+RUN mkdir /.selene
 WORKDIR = $WORKDIR
 ADD . $WORKDIR
+
+
 
 RUN cd $WORKDIR && python -m venv env && . ./env/bin/activate
 RUN pip install --upgrade pip setuptools wheel
@@ -18,3 +21,5 @@ RUN apt-get -qqy install google-chrome-stable vim mc
 # Install chromedriver
 RUN python $WORKDIR/install_chromedriver.py
 RUN chmod -R 755 /home
+RUN chmod -R 755 /.selene
+
