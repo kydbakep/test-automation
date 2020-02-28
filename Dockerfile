@@ -34,3 +34,4 @@ RUN python $WORKDIR/install_chromedriver.py
 # TODO: VOLUMES
 # todo: link folder to get tests
 # todo: link folder to save results and screenshots
+# todo: use that container on host machine
