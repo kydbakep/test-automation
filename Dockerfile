@@ -5,8 +5,9 @@ RUN mkdir $WORKDIR
 WORKDIR = $WORKDIR
 ADD . $WORKDIR
 
-RUN mkdir /.selene && mkdir /.selene/screenshots
-RUN chmod -R ugo-+rw /.selene
+#RUN mkdir /.selene && mkdir /.selene/screenshots
+#RUN chmod -R ugo-+rw /.selene
+RUN chmod -R ugo-+rw /home
 
 RUN cd $WORKDIR && python -m venv env && . ./env/bin/activate
 RUN pip install --upgrade pip setuptools wheel
@@ -20,8 +21,3 @@ RUN apt-get -qqy install google-chrome-stable vim mc
 
 # Install chromedriver
 RUN python $WORKDIR/install_chromedriver.py
-#RUN chmod -R 755 /home
-#RUN chmod -R 755 $WORKDIR
-#RUN chmod -R 755 $WORKDIR/.selene
-#RUN chmod -R 755 /.selene
-RUN uname -a && users
