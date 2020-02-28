@@ -5,7 +5,7 @@ RUN mkdir $WORKDIR
 WORKDIR = $WORKDIR
 ADD . $WORKDIR
 
-RUN mkdir /.wdm && mkdir /.selene && mkdir /.wdm
+RUN mkdir /.wdm && mkdir /.selene
 RUN chmod -R ugo-+rw /.selene && chmod -R ugo-+rw /.wdm
 
 RUN cd $WORKDIR && python -m venv env && . ./env/bin/activate
