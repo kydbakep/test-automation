@@ -5,15 +5,15 @@ RUN mkdir $WORKDIR
 WORKDIR = $WORKDIR
 ADD . $WORKDIR
 
-RUN cd $WORKDIR && python -m venv env && . ./env/bin/activate
-RUN pip install --upgrade pip setuptools wheel
-RUN pip install -r $WORKDIR/requirements.txt
-
 # Install google chrome
 RUN apt-get update
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
 RUN apt-get -qqy install google-chrome-stable vim mc
+
+RUN cd $WORKDIR && python -m venv env && . ./env/bin/activate
+RUN pip install --upgrade pip setuptools wheel
+RUN pip install -r $WORKDIR/requirements.txt
 
 # Install chromedriver
 RUN python $WORKDIR/install_chromedriver.py
