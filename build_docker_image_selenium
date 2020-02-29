@@ -1,0 +1,4 @@
+docker build -t selenium_image -f Dockerfile_selenium .
+docker run -v $(pwd)/project:/project -v $(pwd)/test_results:/test_results -it --rm selenium_image /bin/bash
+docker run -v $(pwd)/project:/project -v $(pwd)/test_results:/test_results -it --rm selenium_image pytest -n=5 /project/tests --junitxml=/test_results/xml/result.xml
+allure generate test_results/xml --clean

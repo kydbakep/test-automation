@@ -1,0 +1,30 @@
+FROM python:3.8.2-buster
+
+LABEL maintainer="a.svaryche@gmail.com"
+
+EXPOSE 9091
+
+ARG WORKDIR=/home/selenium
+WORKDIR = $WORKDIR
+RUN mkdir .local && mkdir .local/bin
+
+ADD requirements.txt .
+ADD install_chromedriver.py .
+
+RUN useradd -ms /bin/bash selenium
+RUN chown -R selenium $WORKDIR
+ENV PATH="$WORKDIR/.local/bin:$PATH"
+
+RUN python -m venv env && . ./env/bin/activate && pip install --upgrade pip setuptools wheel
+RUN pip install -r requirements.txt
+
+# Install google chrome
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+RUN apt-get update && apt-get -qqy install google-chrome-stable vim mc apt-utils nano
+
+# Install chromedriver
+RUN python install_chromedriver.py
+
+VOLUME /project
+VOLUME /test_results

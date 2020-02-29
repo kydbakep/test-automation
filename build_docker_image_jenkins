@@ -1,0 +1,2 @@
+docker build -t jenkins_image -f Dockerfile_selenium .
+docker container create jenkins_image --volumes-from selenium_image

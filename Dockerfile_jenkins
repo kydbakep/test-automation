@@ -1,0 +1,11 @@
+FROM jenkins/jenkins:lts
+
+EXPOSE 9090
+
+ARG WORKDIR=/home/jenkins
+
+RUN mkdir $WORKDIR && useradd -ms /bin/bash jenkins && chown -R jenkins $WORKDIR
+WORKDIR = $WORKDIR
+
+VOLUME /project
+VOLUME /test_results
