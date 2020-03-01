@@ -2,4 +2,4 @@ docker build -t jenkins_image -f Dockerfile_selenium .
 docker container create jenkins_image --volumes-from selenium_image
 
 docker run -v $(pwd)/test_results:/test_results -it -p 9090:8080 jenkins_img
-docker run -v $(pwd)/jenkins_home:/var/jenkins_home -v $(pwd)/test_results:/test_results -it -p 9090:8080 jenkins_img
+docker run -v $(pwd)/jenkins_home:/var/jenkins_home -v $(pwd)/test_results:/test_results -v /var/run/docker.sock:/var/run/docker.sock -it -p 9090:8080 jenkins_img
