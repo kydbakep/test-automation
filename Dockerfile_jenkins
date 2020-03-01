@@ -8,3 +8,8 @@ WORKDIR = $WORKDIR
 
 VOLUME /project
 VOLUME /test_results
+
+USER root
+RUN apt-get update && apt-get install apt-utils vim mc -y
+
+USER jenkins
