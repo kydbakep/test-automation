@@ -1,9 +1,3 @@
-docker build -t jenkins_image -f Dockerfile_selenium .
-docker container create jenkins_image --volumes-from selenium_image
-
-docker run -v /home/remonline/projects/test-automation/jenkins_home:/var/jenkins_home -v /home/remonline/projects/test-automation/test_results:/test_results -v /usr/bin/docker:/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -it -p 9090:8080 jenkins_img
-
-docker run -v /home/remonline/projects/test-automation/jenkins_home:/var/jenkins_home -v /home/remonline/projects/test-automation/test_results:/test_results -it -p 9090:8080 jenkins-python
-
-docker run -v /Users/tober/Documents/projects/test-automation/jenkins_home:/var/jenkins_home -v /Users/tober/Documents/projects/test-automation/test_results:/test_results -it -p 9090:8080 jenkins-python
+docker build -t jenkins-selenium -f Dockerfile_selenium .
+docker run --restart -v /home/remonline/projects/test-automation/jenkins_home:/var/jenkins_home -v /home/remonline/projects/test-automation/test_results:/var/jenkins_home/workspace/orderry-automation/test_results -it -p 9090:8080 jenkins-selenium
 
