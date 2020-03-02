@@ -1,2 +1,5 @@
-docker build -t jenkins-selenium -f Dockerfile .
-docker run -v /home/remonline/projects/test-automation/jenkins_home:/var/jenkins_home -v /home/remonline/projects/test-automation/test_results:/var/jenkins_home/workspace/orderry-automation/test_results -it -p 9090:8080 jenkins-selenium
+# 1. Create user jenkins on host, and note his guid
+# 2. chown jenkins_home volume user: sudo chown -R jenkins /<jenkins_home volume>
+# 3. Run container with option: -u <jenkins-uid>
+# 4. Build image: docker build -t jenkins-selenium -f Dockerfile_jenkins .
+# 5. Run: docker run -u 1002 -v /home/remonline/projects/test-automation/jenkins_home:/var/jenkins_home -it -p 9090:8080 jenkins-selenium
