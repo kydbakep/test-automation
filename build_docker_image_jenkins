@@ -1,2 +1,2 @@
-docker build -t jenkins-selenium -f Dockerfile_jenkins .
+docker build -t jenkins-selenium -f Dockerfile .
 docker run --restart -v /home/remonline/projects/test-automation/jenkins_home:/var/jenkins_home -v /home/remonline/projects/test-automation/test_results:/var/jenkins_home/workspace/orderry-automation/test_results -it -p 9090:8080 jenkins-selenium
