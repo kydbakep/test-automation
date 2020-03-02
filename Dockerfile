@@ -30,6 +30,7 @@ VOLUME /jenkins_home
 VOLUME /test_results
 
 # Install Allure report
+RUN apt-get install software-properties-common
 RUN apt-add-repository ppa:qameta/allure && apt-get update && apt-get install allure
 
 # Change user for Jenkins
