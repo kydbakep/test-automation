@@ -1,6 +1,0 @@
-docker build -t selenium_image -f Dockerfile_selenium .
-docker run -v $(pwd)/project:/project -v $(pwd)/test_results:/test_results -it --rm selenium_image /bin/bash
-docker run -v $(pwd)/jenkins_home/workspace/regression:/project -v $(pwd)/test_results:/test_results -it --rm selenium_img pytest /project/tests --junitxml=/test_results/xml/result.xml
-allure generate test_results/xml --clean
-
-docker run -v /home/remonline/projects/test-automation/jenkins_home/workspace/regression:/project -v /home/remonline/projects/test-automation/test_results:/test_results -it --rm selenium_img pytest /project/tests --junitxml=/test_results/xml/result.xml
