@@ -18,9 +18,9 @@ ADD install_chromedriver.py .
 RUN python3.8 -m pip install -r requirements.txt
 
 # Install google chrome
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
-RUN apt-get update && apt-get -qqy install google-chrome-stable vim mc apt-utils nano
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list && \
+apt-get update && apt-get -qqy install google-chrome-stable vim mc apt-utils nano
 
 # Install chromedriver
 RUN python3.8 install_chromedriver.py
@@ -29,4 +29,8 @@ RUN python3.8 install_chromedriver.py
 VOLUME /jenkins_home
 VOLUME /test_results
 
+# Install Allure report
+RUN apt-add-repository ppa:qameta/allure && apt-get update && apt-get install allure
+
+# Change user for Jenkins
 USER jenkins
