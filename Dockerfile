@@ -25,13 +25,12 @@ apt-get update && apt-get -qqy install google-chrome-stable vim mc apt-utils nan
 # Install chromedriver
 RUN python3.8 install_chromedriver.py
 
-# Jenkins
-VOLUME /jenkins_home
-VOLUME /test_results
-
 # Install Allure report
-RUN apt-get install software-properties-common -y
-RUN apt-add-repository ppa:qameta/allure && apt-get update && apt-get install allure
+ARG ALLURE_LINK=https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.13.2/allure-commandline-2.13.2.zip
+RUN wget $ALLURE_LINK && unzip allure-commandline-2.13.2.zip && chmod +x allure-2.13.2/bin/allure && \
+ln allure-2.13.2/bin/allure /usr/local/bin/allure
+
+RUN cd '/= ' && ./opt/allure-2.13.2/bin/allure --version
 
 # Change user for Jenkins
 USER jenkins
