@@ -30,7 +30,6 @@ def get_driver_path(driver_='chromedriver'):
 def get_configured_chrome(headless=False):
     chrome_options = Chrome()
     if headless:
-        print('\nBrowser will start in headless mode!')
         chrome_options.add_argument('--headless')
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--enable-automation')
