@@ -7,7 +7,7 @@ from selenium.webdriver.chrome.webdriver import Options as Chrome
 from lib.url.lib_url import NEXT_URL
 
 BROWSER_NAME = 'chrome'
-HEADLESS_MODE = False
+HEADLESS_MODE = True
 SET_VALUES_BY_JS = False
 
 
