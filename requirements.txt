@@ -2,7 +2,7 @@ selenium==3.141.0
 selene==2.0.0a21
 pytest==5.3.5
 pytest-xdist==1.31.0
-pytest-allure==2.8.11
+allure-pytest==2.8.11
 faker==4.0.1
 requests==2.23.0
 scrapy==1.8.0

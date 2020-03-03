@@ -1,4 +1,5 @@
 import pytest
+from selene.api import s, be
 
 from lib.auth.fixtures.f_browser import FixturesRegister
 from lib.global_.fixtures.f_browser_settings import FixturesSettings
@@ -9,6 +10,7 @@ from lib.warehouse.pages.page_wh_residue import PageWarehouseResidue
 from lib.warehouse.pages.page_wh_stock import PageWarehouseStock
 
 
+@pytest.mark.usefixtures('allure_screenshot')
 class TestWarehouseMovement(FixturesSettings, FixturesRegister):
 
     @pytest.mark.s03t131
@@ -19,8 +21,8 @@ class TestWarehouseMovement(FixturesSettings, FixturesRegister):
         movement_page = PageWarehouseMovement()
         opened = movement_page.open_movement_dialog()
         closed = movement_page.close_movement_dialog()
-
-        assert all([opened, closed])
+        # assert all([opened, closed])
+        assert False
 
     @pytest.mark.s03t132
     def test_create_movement(self):

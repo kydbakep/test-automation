@@ -7,7 +7,7 @@ from selenium.webdriver.chrome.webdriver import Options as Chrome
 from lib.url.lib_url import NEXT_URL
 
 BROWSER_NAME = 'chrome'
-HEADLESS_MODE = True
+HEADLESS_MODE = False
 SET_VALUES_BY_JS = False
 
 
@@ -44,4 +44,9 @@ class Settings:
         default_url = url_ or get_default_url()
         config.set_value_by_js = SET_VALUES_BY_JS
         config.base_url = default_url
+
+        # Disable saving screenshots, because we use allure_screenshot fixture
+        config.reports_folder = 'reports'
+        config.save_page_source_on_failure = False
+        config.save_screenshot_on_failure = False
         config.driver = get_configured_chrome(HEADLESS_MODE)

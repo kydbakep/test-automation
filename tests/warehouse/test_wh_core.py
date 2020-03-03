@@ -4,6 +4,7 @@ from lib.global_.fixtures.f_browser_settings import FixturesSettings
 from lib.warehouse.pages.page_wh_core import PageWarehouse
 
 
+@pytest.mark.skip
 class TestWarehousePage(FixturesSettings, FixturesRegister):
 
     @pytest.mark.parametrize('tab', PageWarehouse().tabs)

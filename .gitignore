@@ -3,6 +3,7 @@
 
 docker-help.txt
 allure-report
+reports
 Pipfile*
 # ===================================================================
 # This framework

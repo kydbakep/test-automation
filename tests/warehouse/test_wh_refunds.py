@@ -1,5 +1,6 @@
 import pytest
 
+from selene.api import s, be
 from lib.auth.fixtures.f_browser import FixturesRegister
 from lib.global_.fixtures.f_browser_settings import FixturesSettings
 from lib.warehouse.fixtures.f_wh_posting import FixturesWarehousePosting
@@ -10,6 +11,7 @@ from lib.warehouse.wh_suite import WarehousePages
 class TestWarehousePostingRefunds(FixturesSettings, FixturesRegister, FixturesWarehousePosting):
     pages = WarehousePages()
 
+    @pytest.mark.skip
     @pytest.mark.s03t054
     def test_open_close_refund_dialog(self, single_posting_class):
         self.pages.posting.open_document(single_posting_class['label'])
@@ -29,6 +31,7 @@ class TestWarehousePostingRefunds(FixturesSettings, FixturesRegister, FixturesWa
 
         self.pages.sales.open_page()
         self.pages.sales.create_sale(goods_for_sale)
+        s('.sdfggfs').with_(timeout=0.5).should(be.visible)
 
         self.pages.posting.open_page()
         self.pages.posting.open_document(posting_doc)
@@ -44,6 +47,7 @@ class TestWarehousePostingRefunds(FixturesSettings, FixturesRegister, FixturesWa
         assert all([goods_for_check['title'] in products, not goods_for_sale['title'] in products,
                     is_passport_opened, is_passport_closed, is_dialog_closed])
 
+    @pytest.mark.skip
     @pytest.mark.s03t141
     def test_edit_refunded_product_with_cells_enabled(self, single_posting_class):
         self.pages.posting.open_page()
@@ -64,6 +68,7 @@ class TestWarehousePostingRefunds(FixturesSettings, FixturesRegister, FixturesWa
         self.pages.posting.close_document_by_button()
         assert can_be_edited_with_addressed_storage
 
+    @pytest.mark.skip
     @pytest.mark.s03t141
     def test_edit_refunded_product_with_cells_disabled(self, single_posting_class):
         self.pages.posting.open_page()
