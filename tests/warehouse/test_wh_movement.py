@@ -21,8 +21,7 @@ class TestWarehouseMovement(FixturesSettings, FixturesRegister):
         movement_page = PageWarehouseMovement()
         opened = movement_page.open_movement_dialog()
         closed = movement_page.close_movement_dialog()
-        # assert all([opened, closed])
-        assert False
+        assert all([opened, closed])
 
     @pytest.mark.s03t132
     def test_create_movement(self):
